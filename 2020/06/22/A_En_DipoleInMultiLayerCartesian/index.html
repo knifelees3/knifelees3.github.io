@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Dipole's Emission In Multi-Layered  Structure | Zhaohua Tian's Web</title><meta name="author" content="Zhaohua Tian"><meta name="copyright" content="Zhaohua Tian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="IntroductionThis is the note of dipole radiation pattern calculations in a multilayer structure.  The numerical realizations can be found in my Github. The derivations mainly follow the work of Olivie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dipole&#39;s Emission In Multi-Layered  Structure">
+<meta property="og:url" content="https://knifelees3.github.io/2020/06/22/A_En_DipoleInMultiLayerCartesian/index.html">
+<meta property="og:site_name" content="Zhaohua Tian&#39;s Web">
+<meta property="og:description" content="IntroductionThis is the note of dipole radiation pattern calculations in a multilayer structure.  The numerical realizations can be found in my Github. The derivations mainly follow the work of Olivie">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200223215829792_1734.jpg">
+<meta property="article:published_time" content="2020-06-22T05:05:30.000Z">
+<meta property="article:modified_time" content="2020-08-07T02:55:20.000Z">
+<meta property="article:author" content="Zhaohua Tian">
+<meta property="article:tag" content="Physics">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200223215829792_1734.jpg"><link rel="shortcut icon" href="/upload/ket.png"><link rel="canonical" href="https://knifelees3.github.io/2020/06/22/A_En_DipoleInMultiLayerCartesian/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Dipole\'s Emission In Multi-Layered  Structure',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-08-07 10:55:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/upload/ket.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200223215829792_1734.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zhaohua Tian's Web"><span class="site-name">Zhaohua Tian's Web</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Dipole's Emission In Multi-Layered  Structure</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-06-22T05:05:30.000Z" title="Created 2020-06-22 13:05:30">2020-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-08-07T02:55:20.000Z" title="Updated 2020-08-07 10:55:20">2020-08-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Physics/">Physics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Physics/EnglishNotes/">EnglishNotes</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">6.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>43min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Dipole's Emission In Multi-Layered  Structure"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This is the note of dipole radiation pattern calculations in a multilayer structure. </p>
+<p>The numerical realizations can be found in my <a target="_blank" rel="noopener" href="https://github.com/knifelees3/DipoleEmissionInSymmetricStructure">Github</a>.</p>
+<p>The derivations mainly follow the work of Olivier J. F et .al [^ref1]</p>
+<h2 id="Extra-words"><a href="#Extra-words" class="headerlink" title="Extra words"></a>Extra words</h2><p>My previous calculations are not helpful since we can not get the emission pattern. In previous cylindrical expressions, the integral in $\mathrm{d}k_{\phi}$ has been transformed into Bessel functions via<br>$$<br>J_{n}(k_{\rho}\rho)&#x3D;\frac{j^{-n}}{2\pi}\int_{0}^{2\pi}\mathrm{d}k_{\phi}\exp (jk_{\rho}\rho\cos k_\phi)cos(nk_\phi)<br>$$</p>
+<p>If we extract the information of $\mathrm{d}k_{\phi}$, our previous expressions can also be used to get the emission pattern. However, to make this easier to understand, we use plane waves to expand Green’s tensor.</p>
+<h1 id="Green-tensor-expression"><a href="#Green-tensor-expression" class="headerlink" title="Green tensor expression"></a>Green tensor expression</h1><p>We will use Green tensor to get the dipole’s emission!</p>
+<p><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200223215829792_1734.jpg"></p>
+<p>I will follow the derivations of Paulus et. al . The derivations will begin from the expression of the Green’s tensor. We still consider only the nonmagnetic material so $\mu&#x3D;1$ and we use $\mu&#x3D;\mu_0$ to express the permeability in the vacuum. The equation of the Green’s tensor is as follows</p>
+<p>$$<br>\boldsymbol{\nabla}\times\boldsymbol{\nabla}\times \boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}_0)-k_0^2\varepsilon\mu\boldsymbol{\nabla}\times \boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}_0)&#x3D;\boldsymbol{I}\delta(\boldsymbol{r}-\boldsymbol{r}_0)<br>$$</p>
+<p>and for a homogeneous media the Green’s tensor can be expressed as</p>
+<p>$$<br>\boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}<em>0)&#x3D;\left(1+\frac{\boldsymbol{\nabla}\boldsymbol{\nabla}}{k_B^2}\right)\frac{\exp (jk_BR)}{4\pi R}<br>$$<br>where $R&#x3D;|\boldsymbol{R}|&#x3D;|\boldsymbol{r-r_0}|$ is the relative distance and $k</em>{B}^2&#x3D;\omega^2\varepsilon \mu$ corresponds to the wave number in the background medium. We can do Fourier transform of Green’s tensor as<br>$$<br>\begin{aligned}<br>    \boldsymbol{\overset\leftrightarrow{G}}(k)&amp;&#x3D;\iiint_{-\infty}^{\infty}\boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}<em>0)\exp(-j\boldsymbol{k}\cdot\boldsymbol{R})\mathrm{d}\boldsymbol{R}\<br>    &amp;&#x3D;\iiint</em>{-\infty}^{\infty}\left(1+\frac{\boldsymbol{\nabla}\boldsymbol{\nabla}}{k_B^2}\right)\frac{\exp (jk_BR)}{4\pi R} \exp(-j\boldsymbol{k}\cdot\boldsymbol{R})\mathrm{d}\boldsymbol{R}\<br> \end{aligned}<br>$$</p>
+<p>and we can express the Green’s tensor as a Fourier transform of each wavevector,</p>
+<p>$$<br>\boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}_0)&#x3D;\frac{1}{8\pi^3k_B^2}\iiint \mathrm{d} \mathbf{k}\left(\frac{\boldsymbol{1}k_B^2-\boldsymbol{\mathrm{k}}\boldsymbol{\mathrm{k}}}{k^2-k_B^2}\right)\exp (j\boldsymbol{\mathrm{k}} \boldsymbol{\cdot R})<br>$$</p>
+<p>Since we assume that the layers, which will be added later, are perpendicular to the z axis, we first perform the integration over $k_z$ using calculus of residues. Hence, we muse ensure that the integrand vanishes for $k_z\rightarrow\infty$ and rewrite as</p>
+<p>$$<br>\begin{aligned}<br>\mathbf{G}\left(\mathbf{r}, \mathbf{r}<em>0\right)&#x3D;&amp; \frac{1}{8 \pi^{3} k</em>{B}^{2}} \iiint \mathrm{d} \mathbf{k}\left(\frac{\mathbf{1} k_{B}^{2}-\mathbf{k} \mathbf{k}}{k^{2}-k_{B}^{2}}+\hat{\mathbf{z}} \hat{\mathbf{z}}\right) \exp (j \mathbf{k} \cdot \mathbf{R}) \<br>&amp;-\frac{\hat{\mathbf{z}} \hat{\mathbf{z}}}{8 \pi^{3} k_{B}^{2}} \iint \mathrm{d} \mathbf{k} \exp (i \mathbf{k} \cdot \mathbf{R}) \<br>&#x3D;&amp; \frac{j}{8 \pi^{2} k_{B}^{2}} \iint \mathrm{d} k_{x} \mathrm{d} k_{y}\left(\frac{\mathbf{1} k_{B}^{2}-\mathbf{k}<em>{B}\mathbf{k}</em>{B}}{k_{B z}}\right) \<br> &amp; \times \exp \left(j \mathbf{k}<em>{B} \cdot \mathbf{R}\right)-\frac{\hat{\mathbf{z}} \hat{\mathbf{z}}}{k</em>{B}^{2}} \delta(\mathbf{R})<br> \end{aligned}<br>$$</p>
+<p>where $k_{Bz}&#x3D;\sqrt{k_B^2-k_x^2-k_y^2}$ is the z component of the wave vector and $\boldsymbol{z}$</p>
+<p>$$<br>\boldsymbol{\mathrm{k}}<em>B(k</em>{Bz})&#x3D;\left{ \begin{aligned}<br>k_x\boldsymbol{\hat{x}}+k_y\boldsymbol{\hat{y}}+k_z\boldsymbol{\hat{z}} \quad \text{for} \quad z &gt; z_0,\<br>k_x\boldsymbol{\hat{x}}+k_y\boldsymbol{\hat{y}}-k_z\boldsymbol{\hat{z}} \quad \text{for} \quad z &lt; z_0,<br>\end{aligned}\right.<br>$$</p>
+<p>Now that we have the plane-wave expansion of the Green’s tensor for an infinite homogeneous background. It is a simple matter to include additional layers. Indeed, the effect of these layers will be to add two plane waves, one propagating upward and one downward, to each Fourier component, The amplitudes of these additional components are determined by the boundary conditions at the different interfaces. Since the Green’s tensor represents the electric field radiated at $r$ by three orthogonal point sources at $r’$, the boundary conditions depend on the polarization of the corresponding Fourier component. It is therefore advantageous to introduce a new orthonormal system<br>$\boldsymbol{\mathrm{\hat{k}}}(k_{Bz}),\boldsymbol{\mathrm{\hat{I}}}(k_{Bz}),\boldsymbol{\mathrm{\hat{m}}}(k_{Bz})$<br>$$<br>\boldsymbol{\mathrm{\hat{k}}}(k_{Bz})&#x3D;\frac{\boldsymbol{\mathrm{k}}(k_{Bz})}{k_B}&#x3D;(\hat{k}<em>x(k</em>{Bz}),\hat{k}<em>y(k</em>{Bz}),\hat{k}<em>z(k</em>{Bz}))<br>$$</p>
+<p>$$<br>\boldsymbol{\mathrm{\hat{I}}}(k_{Bz})&#x3D;\frac{\boldsymbol{\mathrm{\hat{k}}}(k_{Bz})\times \boldsymbol{\hat{z}}}{|\boldsymbol{\mathrm{\hat{k}}}(k_{Bz})\times \boldsymbol{\hat{z}}|}&#x3D;(\hat{k}<em>y(k</em>{Bz}),-\hat{k}<em>x(k</em>{Bz}),0)<br>$$</p>
+<p>$$<br>\boldsymbol{\mathrm{\hat{m}}}(k_{Bz})&#x3D;\boldsymbol{\mathrm{\hat{k}}}(k_{Bz})\times\boldsymbol{\mathrm{\hat{I}}}(k_{Bz})&#x3D;\left(\hat{k}<em>x(k</em>{Bz})\hat{k}<em>z(k</em>{Bz}),\hat{k}<em>y(k</em>{Bz})\hat{k}<em>z(k</em>{Bz}),-\left[\hat{k}<em>x^2(k</em>{Bz})+\hat{k}<em>y^2(k</em>{Bz})\right]\right)<br>$$</p>
+<p>Equivalently, another orthogonal system is formed by $\boldsymbol{\mathrm{\hat{k}}}(-k_{Bz}),\boldsymbol{\mathrm{\hat{I}}}(-k_{Bz}),\boldsymbol{\mathrm{\hat{m}}}(-k_{Bz})$. Remark that $\boldsymbol{\mathrm{\hat{I}}}$ is perpendicular to the plane<br>defined by $\boldsymbol{\mathrm{\hat{k}}}$ and $\boldsymbol{\mathrm{\hat{z}}}$, whereas $\boldsymbol{\mathrm{\hat{m}}}$ lies within this plane. For a given $k_B$, the electric field component parallel to $\boldsymbol{\mathrm{\hat{I}}}$ corresponds<br>to s polarization and that parallel to $\boldsymbol{\mathrm{\hat{m}}}$ corresponds to p polarization, using the fact that</p>
+<p>$$<br>\boldsymbol{\mathrm{\hat{k}}}\boldsymbol{\mathrm{\hat{k}}}+\boldsymbol{\mathrm{\hat{I}}}\boldsymbol{\mathrm{\hat{I}}}+\boldsymbol{\mathrm{\hat{m}}}\boldsymbol{\mathrm{\hat{m}}}&#x3D;\boldsymbol{\mathrm{1}}<br>$$<br>we can rewrite the Green’s tensor as</p>
+<p>$$<br>\mathbf{G}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)&#x3D;-\frac{\hat{\mathbf{z}} \hat{\mathbf{z}}}{k_{B}^{2}} \delta(\mathbf{R})+\frac{j}{8\pi^2}\iint \mathrm{d} k_{x} \mathrm{d} k_{y}\left(\frac{\boldsymbol{\mathrm{\hat{I}}}\boldsymbol{\mathrm{\hat{I}}}+\boldsymbol{\mathrm{\hat{m}}}\boldsymbol{\mathrm{\hat{m}}}}{k_{Bz}}\right)\times \exp (j\boldsymbol{\mathrm{k}} \boldsymbol{\cdot R})<br>$$<br>To obtain the Green’s tensor $\mathbf{G}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)$ for a stratified medium, we can now superpose to the free-space Green’s tensor of a homogeneous medium $\varepsilon_l$ the additional terms by  formally writing</p>
+<p>$$<br>\begin{aligned}<br>    \mathbf{G}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)&#x3D;&amp;-\frac{\hat{\mathbf{z}} \hat{\mathbf{z}}}{k_{l}^{2}} \delta(\mathbf{R})+\frac{i}{8 \pi^{2}} \iint \mathrm{d} k_{x} \mathrm{d} k_{y} \exp \left{j\left[k_{x}\left(x-x_0\right)+k_{y}\left(y-y_0\right)\right]\right}\frac{1}{k_{l z}}\<br>    &amp;\left[\hat{\mathbf{I}}\hat{\mathbf{I}} \exp \left(j k_{l z}\left|z-z_0\right|\right)+\mathbf{R}^{s \uparrow} \exp \left(i k_{l z} z\right)+\mathbf{R}^{s \downarrow} \exp \left(-j k_{l z} z\right)\right.\<br>    &amp;\left.+\hat{\mathbf{m}}\hat{\mathbf{m}} \exp \left(j k_{l z}\left|z-z_0 \right|\right)+\mathbf{R}^{p \uparrow} \exp \left(i k_{l z} z\right)+\mathbf{R}^{p \downarrow} \exp \left(-j k_{l z} z\right)\right]<br>    \end{aligned}<br>$$</p>
+<p>where $k_{l}^2&#x3D;\omega^2\varepsilon_l\mu_l$ and $k_{lz}&#x3D;\sqrt{k_l^2-k_x^2-k_y^2}$. The tensors $\mathbf{R}^{s \uparrow},\mathbf{R}^{s \downarrow},\mathbf{R}^{p \uparrow},\mathbf{R}^{p \downarrow}$ can obviously be interpreted as generalized reflection coefficients that take into account reflections from all existing surfaces. For the explicit calculation of $\mathbf{G}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)$ it is necessary to consider separately the two cases $z&gt;z_0$ and $z&lt;z_0$. each component of the Green’s tensor is expressed in terms of s- and p-polarized upgoing and down going plane waves with amplitude coefficients $A_{l,\alpha\beta}^{s&#x2F;p},B_{l,\alpha\beta}^{s&#x2F;p}$</p>
+<p>$$<br>\begin{aligned} G_{\alpha \beta}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)&#x3D;&amp; \frac{j}{8 \pi^{2}} \iint \mathrm{d} k_{x} \mathrm{d} k_{y} \exp \left{j\left[k_{x}\left(x-x^{\prime}\right)\right.\right.\ &amp;\left.\left.+k_{y}\left(y-y^{\prime}\right)\right]\right} \frac{1}{k_{l z}}\left{\left[\hat{l}<em>{\alpha}\left( \pm k</em>{l z}\right) A_{l, \alpha \beta}^{s} \exp \left(j k_{l z} z\right)\right.\right.\ &amp;\left.+\hat{l}<em>{\alpha}\left(\mp k</em>{l z}\right) B_{l, \alpha \beta}^{s} \exp \left(-j k_{l z} z\right)\right] \hat{l}<em>{\beta}\left(k</em>{l z}\right) \ &amp;+\left[\hat{m}<em>{\alpha}\left( \pm k</em>{l z}\right) A_{l, \alpha \beta}^{p} \exp \left(j k_{l z} z\right)\right.\ &amp;\left.\left.+\hat{m}<em>{\alpha}\left(\mp k</em>{l z}\right) B_{l, \alpha \beta}^{p} \exp \left(-j k_{l z} z\right)\right] \hat{m}<em>{\beta}\left(k</em>{l z}\right)\right} \end{aligned}<br> \label{Galphabeta}<br>$$</p>
+<p>We need express each component of the Green’s tensor and then we can write the field distribution for an arbitrary orientate dipole. And the coefficients can be obtained from the outer layer to the emitting layer. It’s necessary for us to write the explict form of the Green tensor. We write the Green tensor as</p>
+<p>$$<br>G_{\alpha \beta}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)&#x3D;\frac{j}{8 \pi^{2}}\iint \mathrm{d} k_{x} \mathrm{d} k_{y} \exp \left{j\left[k_{x}\left(x-x^{\prime}\right)+k_{y}\left(y-y^{\prime}\right)\right]\right} \frac{1}{k_{l z}}\left[f_{\alpha,\beta}^s+f_{\alpha,\beta}^p\right]<br>$$</p>
+<p>We need write the explicit form of the tensor,</p>
+<p>$$<br>1-\boldsymbol{\mathrm{\hat{k}}}\boldsymbol{\mathrm{\hat{k}}}&#x3D;\frac{1}{k_{l}^{2} }\left[\begin{array}{ccc}{k_{l}^{2}-k_{x}^{2}} &amp; {-k_{x} k_{y}} &amp; {\mp k_{x} k_{lz}} \ {-k_{x} k_{y}} &amp; {k_{l}^{2}-k_{y}^{2}} &amp; {\mp k_{y} k_{lz}} \ {\mp k_{x} k_{lz}} &amp; {\mp k_{y} k_{lz}} &amp; {k_{l}^{2}-k_{lz}^{2}}\end{array}\right]<br>$$<br>and</p>
+<p>$$<br>\boldsymbol{\mathrm{\hat{I}}}\boldsymbol{\mathrm{\hat{I}}}&#x3D;\frac{1}{\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{k_{y}^{2}} &amp; {-k_{x} k_{y}} &amp; {0} \ {-k_{x} k_{y}} &amp; {k_{x}^{2}} &amp; {0} \ {0} &amp; {0} &amp; {0}\end{array}\right]<br>$$</p>
+<p>$$<br>\boldsymbol{\mathrm{\hat{m}}}\boldsymbol{\mathrm{\hat{m}}}&#x3D;\frac{1}{k_{l}^{2}\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{k_{x}^{2} k_{lz}^2} &amp; {k_{x} k_{y} k_{lz}^2} &amp; {\mp k_{x}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} \ {k_{x} k_{y} k_{lz}^2} &amp; {k_{y}^{2} k_{lz}^2} &amp; {\mp k_{lz}k_{y}\left(k_{x}^{2}+k_{y}^{2}\right)} \ {\mp k_{x}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp; {\mp k_{lz} k_{y}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp; {\left(k_{x}^{2}+k_{y}^{2}\right)^{2}}\end{array}\right]<br>$$</p>
+<p>Since the definition in the [] let the sign attached to $A_l,B_{l}$, then</p>
+<p>$$<br>\boldsymbol{f^s}&#x3D;\frac{1}{\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{k_{y}^{2}} &amp; {-k_{x} k_{y}} &amp; {0} \ {-k_{x} k_{y}} &amp; {k_{x}^{2}} &amp; {0} \ {0} &amp; {0} &amp; {0}\end{array}\right]\odot \left(\boldsymbol{A}<em>{l}^s\exp(jk</em>{lz}z))+\boldsymbol{B}<em>{l}^s\exp(-jk</em>{lz}z)\right)<br>$$</p>
+<p>$$<br>\begin{aligned}<br>    \boldsymbol{f^p}&amp;&#x3D;\frac{1}{k_{l}^{2}\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{\pm k_{x}^{2} k_{lz}^2} &amp; \pm {k_{x} k_{y} k_{lz}^2} &amp; \mp{k_{x}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    \pm {k_{x} k_{y} k_{lz}^2} &amp; \pm {k_{y}^{2} k_{lz}^2} &amp; \mp{ k_{y}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    { - k_{x}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp; - { k_{y}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp;  {\left(k_{x}^{2}+k_{y}^{2}\right)^{2} }\end{array}\right]\odot \boldsymbol{A}<em>{l}^p\exp(jk</em>{lz}z))\<br>    &amp;+\frac{1}{k_{l}^{2}\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{\mp k_{x}^{2} k_{lz}^2} &amp; \mp {k_{x} k_{y} k_{lz}^2} &amp; \pm{k_{x}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>     \mp {k_{x} k_{y} k_{lz}^2} &amp; \mp {k_{y}^{2} k_{lz}^2} &amp; \pm{ k_{y}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    { - k_{x}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp; - { k_{y}k_{lz}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp;  {\left(k_{x}^{2}+k_{y}^{2}\right)^{2} }\end{array}\right]\odot \boldsymbol{B}<em>{l}^p\exp(-jk</em>{lz}z)<br>\end{aligned}<br>$$</p>
+<p>Here $\odot$ means the multiply of the corresponding elements in each matrix. We now need calculate the accurate expression of the $A_{\alpha,\beta}^{s&#x2F;p},A_{\alpha,\beta}^{s&#x2F;p}$, in the emitting layer $A_{\alpha,\beta}^{s&#x2F;p},A_{\alpha,\beta}^{s&#x2F;p}$ should include the dipole’s background part and the reflecting part from other layers. The total reflection coefficients can be calculated iteratively from the outer layer. For the p polarization, for $\beta \neq z$<br>$$<br>A_{0,\alpha \beta}^{p\uparrow&#x2F;\downarrow}&#x3D;\pm R^{p\downarrow}<em>{0,\alpha\beta}\frac{R^{p\uparrow}</em>{0,\alpha\beta}\exp(-jk_{0z}z_0)-\exp(jk_{0z}z_0)}{1-R^{p\downarrow}<em>{0,\alpha\beta}R^{p\uparrow}</em>{0,\alpha\beta}}\pm\Theta(z-z_0)\exp(-jk_{0z}z_0)<br>$$</p>
+<p>$$<br>B_{l,\alpha \beta}^{p\uparrow&#x2F;\downarrow}&#x3D;\mp R^{p\uparrow}<em>{0,\alpha\beta}\frac{R^{p\downarrow}</em>{0,\alpha\beta}\exp(jk_{0z}z_0)-\exp(-jk_{0z}z_0)}{1-R^{p\downarrow}<em>{0,\alpha\beta}R^{p\uparrow}</em>{0,\alpha\beta}}\mp \Theta(z_0-z)\exp(jk_{0z}z_0)<br>$$<br>with $\beta&#x3D;z$</p>
+<p>$$<br>A_{l,\alpha \beta}^{p\uparrow&#x2F;\downarrow}&#x3D; R^{p\downarrow}<em>{0,\alpha\beta}\frac{R^{p\uparrow}</em>{0,\alpha\beta}\exp(-jk_{0z}z_0)+\exp(jk_{0z}z_0)}{1-R^{p\downarrow}<em>{0,\alpha\beta}R^{p\uparrow}</em>{0,\alpha\beta}}+\Theta(z-z_0)\exp(-jk_{0z}z_0)<br>$$</p>
+<p>$$<br>B_{l,\alpha \beta}^{p\uparrow&#x2F;\downarrow}&#x3D; R^{p\uparrow}<em>{0,\alpha\beta}\frac{R^{p\downarrow}</em>{0,\alpha\beta}\exp(jk_{0z}z_0)+\exp(-jk_{0z}z_0)}{1-R^{p\downarrow}<em>{0,\alpha\beta}R^{p\uparrow}</em>{0,\alpha\beta}}+ \Theta(z_0-z)\exp(jk_{0z}z_0)<br>$$</p>
+<p>For the s polarization</p>
+<p>$$<br>A_{l,\alpha \beta}^{s\uparrow&#x2F;\downarrow}&#x3D; R^{s\downarrow}<em>{0,\alpha\beta}\frac{R^{s\uparrow}</em>{0,\alpha\beta}\exp(-jk_{0z}z_0)+\exp(jk_{0z}z_0)}{1-R^{s\downarrow}<em>{0,\alpha\beta}R^{s\uparrow}</em>{0,\alpha\beta}}+\Theta (z-z_0)\exp(-jk_{0z}z_0)<br>$$</p>
+<p>$$<br>B_{l,\alpha \beta}^{s\uparrow&#x2F;\downarrow}&#x3D; R^{s\uparrow}<em>{0,\alpha\beta}\frac{R^{s\downarrow}</em>{0,\alpha\beta}\exp(jk_{0z}z_0)+\exp(-jk_{0z}z_0)}{1-R^{s\downarrow}<em>{0,\alpha\beta}R^{s\uparrow}</em>{0,\alpha\beta}}+ \Theta (z_0-z)\exp(jk_{0z}z_0)<br>$$</p>
+<p>In above expressions, $R^{s&#x2F;p,\uparrow\downarrow}$ are the total reflections in the emitting layer, we define the reflection coefficients in the upper space for each interface as</p>
+<p>$$<br>R_{l,\alpha\beta}^{p\uparrow}&#x3D;\frac{B_{l,\alpha\beta}^{p\uparrow}}{A_{l,\alpha\beta}^{p\uparrow}},R_{l,\alpha\beta}^{s\uparrow}&#x3D;\frac{B_{l,\alpha\beta}^{s\uparrow}}{A_{l,\alpha\beta}^{s\uparrow}}<br>$$</p>
+<p>the same with the lower space</p>
+<p>$$<br>R_{l}^{p\downarrow}&#x3D;\frac{A_{l}^{p\downarrow}}{B_{l}^{p\downarrow}},R_{l}^{s\downarrow}&#x3D;\frac{A_{l}^{s\downarrow}}{B_{l}^{s\downarrow}}<br>$$</p>
+<p>the reflections can be calculated iteratively from the outer layer</p>
+<p>$$<br>R_{l,\alpha\beta}^{s&#x2F;p,\uparrow}&#x3D;\frac{R_{l+1,\alpha\beta}^{s&#x2F;p,\uparrow}e^{-j(k_{(l+1)z}-k_{lz})d_{l+1}}+R_{l(l+1)}^{s&#x2F;p}e^{j(k_{(l+1)z}+k_{lz})d_{l+1}}}{R_{l+1,\alpha\beta}^{s&#x2F;p,\uparrow}R_{l(l+1)}^{s&#x2F;p}e^{-j(k_{(l+1)z}+k_{lz})d_{l+1}}+e^{j(k_{(l+1)z}-k_{lz})d_{l+1}}}<br>$$</p>
+<p>$$<br>R_{l,\alpha\beta}^{s&#x2F;p,\downarrow}&#x3D;\frac{R_{l-1,\alpha\beta}^{s&#x2F;p,\downarrow}e^{j(k_{(l-1)z}-k_{lz})d_{l}}+R_{l(l-1)}^{s&#x2F;p}e^{-j(k_{(l-1)z}+k_{lz})d_{l}}}{R_{l-1,\alpha\beta}^{s&#x2F;p,\downarrow}R_{l(l-1)}^{s&#x2F;p}e^{j(k_{(l-1)z}+k_{lz})d_{l}}+e^{-j(k_{(l-1)z}-k_{lz})d_{l}}}<br>$$</p>
+<p>where</p>
+<p>$$<br>R_{l(l-1)}^{p}&#x3D;\frac{\varepsilon_{l-1} k_{l z}-\varepsilon_{l} k_{l-1, z}}{\varepsilon_{l} k_{(l-1) z}+\varepsilon_{l-1} k_{l z}}&#x3D;-R_{(l-1) l}^{p} \quad R_{l(l-1)}^{s}&#x3D;\frac{k_{l z}-k_{(l-1) z}}{k_{(l-1) z}+k_{l z}}&#x3D;-R_{(l-1) l}^{s}<br>$$<br>and</p>
+<p>$$<br>T_{l(l-1)}^{p}&#x3D;\frac{2\varepsilon_{l-1} k_{l z}}{\varepsilon_{l} k_{(l-1) z}+\varepsilon_{l-1} k_{l z}}&#x3D;1+R_{l(l-1) }^{p} \quad T_{l(l-1)}^{s}&#x3D;\frac{2k_{l z}}{k_{(l-1) z}+k_{l z}}&#x3D;1+R_{l(l-1)}^{s}<br>$$</p>
+<p>So we can calculate the coefficients in the emitting layer, and the coefficients in other can be calculated via the transmission matrix.</p>
+<h2 id="In-the-upper-space"><a href="#In-the-upper-space" class="headerlink" title="In the upper space"></a>In the upper space</h2><p>$$<br>A_{l+1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[A_{l,\alpha\beta}^{s&#x2F;p}e^{j(k_{lz}-k_{(l+1)z})d_{l+1}}+R_{(l+1)l}^{s&#x2F;p}B_{l,\alpha\beta}^{s&#x2F;p} e^{-j(k_{lz}+k_{(l+1)z})d_{l+1}}\right]<br>$$</p>
+<p>$$<br>B_{l+1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[R_{(l+1)l}^{s&#x2F;p}A_{l,\alpha\beta}^{s&#x2F;p}e^{j(k_{lz}+k_{(l+1)z})d_{l+1}}+B_{l,\alpha\beta}^{s&#x2F;p} e^{-j(k_{lz}-k_{(l+1)z})d_{l+1}}\right]<br>$$</p>
+<p>where</p>
+<p>$$<br>\gamma^{s}&#x3D;\frac{1}{2}\frac{k_{lz}+k_{(l+1)z}}{k_{lz}}&#x3D;\frac{1}{1-R^{s}_{(l+1)l}}<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l+1}+\varepsilon_{l}k_{(l+1)z}}{k_{(l+1)z}\varepsilon_{l}}&#x3D;\frac{1}{1+R^{p}_{(l+1)l}},\quad \text {for } \quad \beta&#x3D;x,y,\quad\alpha&#x3D;x,y,z<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l+1}+\varepsilon_{l}k_{lz}}{k_{lz}\varepsilon_{l+1}}&#x3D;\frac{k_{(l+1)z}}{k_{lz}}\frac{1}{1+R^{p}_{(l+1)l}},\quad \text {for } \quad \beta&#x3D;z, \quad\alpha&#x3D;x,y,z<br>$$</p>
+<h2 id="In-the-lower-space"><a href="#In-the-lower-space" class="headerlink" title="In the lower space"></a>In the lower space</h2><p>$$<br>A_{l-1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[A_{l,\alpha\beta}^{s&#x2F;p}e^{j(k_{lz}-k_{(l-1)z})d_{l}}+R_{(l-1)l}^{s&#x2F;p}B_{l,\alpha\beta}^{s&#x2F;p} e^{-j(k_{lz}+k_{(l-1)z})d_{l}}\right]<br>$$</p>
+<p>$$<br>B_{l-1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[R_{(l-1)l}^{s&#x2F;p}A_{l,\alpha\beta}^{s&#x2F;p}e^{j(k_{lz}+k_{(l-1)z})d_{l}}+B_{l,\alpha\beta}^{s&#x2F;p} e^{-j(k_{lz}-k_{(l-1)z})d_{l}}\right]<br>$$</p>
+<p>where</p>
+<p>$$<br>\gamma^{s}&#x3D;\frac{1}{2}\frac{k_{lz}+k_{(l-1)z}}{k_{lz}}&#x3D;\frac{1}{1-R^{s}_{(l-1)l}}<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l-1}+\varepsilon_{l}k_{(l-1)z}}{k_{(l-1)z}\varepsilon_{l}}&#x3D;\frac{1}{1+R^{p}_{(l-1)l}},\quad \text {for } \quad \beta&#x3D;x,y,\quad\alpha&#x3D;x,y,z<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l-1}+\varepsilon_{l}k_{(l-1)z}}{k_{lz}\varepsilon_{l}}&#x3D;\frac{k_{(l-1)z}}{k_{lz}}\frac{1}{1+R^{p}_{(l-1)l}},\quad \text {for } \quad \beta&#x3D;z, \quad\alpha&#x3D;x,y,z<br>$$</p>
+<h1 id="The-field-expression-and-emission-pattern"><a href="#The-field-expression-and-emission-pattern" class="headerlink" title="The field expression and emission pattern"></a>The field expression and emission pattern</h1><p>The Green’s tensor can be obtained in previous section, the electric field and magnetic field can be obtained from the Green’s tensor via</p>
+<p>$$<br>\vec{E}(r)&#x3D;j\omega\mu_0 \boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}_0)\boldsymbol{p}&#x3D;j\omega\mu_0 \left(\boldsymbol{\overset\leftrightarrow{I}}+\frac{\nabla \nabla}{k^{2}}\right) G_0(\boldsymbol{r},\boldsymbol{r}_0)\boldsymbol{p}<br>$$</p>
+<p>$$<br>\vec{H}(r)&#x3D;\nabla \times \left(\boldsymbol{\overset\leftrightarrow{G}}(\boldsymbol{r},\boldsymbol{r}_0)\boldsymbol{p}\right)&#x3D;\nabla \times \left(\boldsymbol{\overset\leftrightarrow{I}}+\frac{\nabla \nabla}{k^{2}}\right) G_0(\boldsymbol{r},\boldsymbol{r}_0)\boldsymbol{p}&#x3D;\nabla \times G_0(\boldsymbol{r},\boldsymbol{r}_0)\boldsymbol{p}<br>$$</p>
+<p>And we can write the electric field as</p>
+<p>$$<br>E(r)&#x3D;\iint \boldsymbol{E}^{s}(k_x,k_y,k_z)+\boldsymbol{E}^{p}(k_x,k_y,k_z)\mathrm{d}k_x\mathrm{d}k_y<br>$$<br>The far field $E_{\infty}$ observed in the direction of the dimensionless unit vector</p>
+<p>$$<br>\boldsymbol{s}&#x3D;(s_x,s_y,s_z)&#x3D;(\boldsymbol{\frac{x}{r}},\boldsymbol{\frac{y}{r}},\boldsymbol{\frac{z}{r}})&#x3D;(\frac{k_x}{k},\frac{k_y}{k},\frac{k_z}{k})<br>$$<br>is determined by the Fourier spectrum $\boldsymbol{E}(k_x,k_y,k_z)$ as $z&#x3D;0$ as</p>
+<p>$$<br>\boldsymbol{E}_{\infty}(s_x,s_y)&#x3D;-iks_z \boldsymbol{E}(ks_x,ks_y;0)\frac{e^{ikr}}{r}<br>$$</p>
+<p>In the far field , the magnetic field vector is transverse to the electric field vector and the time-averaged Poynting vectors is<br>calculated as </p>
+<p>$$<br>\langle \boldsymbol{S}\rangle &#x3D;\frac{1}{2}\text{Re}{\boldsymbol{E}\times \boldsymbol{H}}&#x3D;\frac{1}{2}\sqrt{\frac{\epsilon_0\varepsilon_l}{\mu_0\mu_l}}(\boldsymbol{E}\cdot \boldsymbol{E}^{*})\cdot\boldsymbol{n}_{r}<br>$$</p>
+<p>Since the s and p polarized field are orthogonal, then we can express the far field power as</p>
+<p>$$<br>\begin{aligned}<br>    &amp;\iint \frac{1}{2}\sqrt{\frac{\epsilon_0\varepsilon_l}{\mu_0\mu_l}}(\boldsymbol{E_{\infty}}\cdot \boldsymbol{E_{\infty}}^{*})\cdot\boldsymbol{n}<em>{r}\cdot r^2\sin\theta \mathrm{d}\theta \mathrm{d}\phi\<br>    &#x3D;&amp;\iint \frac{1}{2}\sqrt{\frac{\epsilon_0\varepsilon_l}{\mu_0\mu_l}}k_z^2 |\boldsymbol{E}(ks_x,ks_y;0)\cdot\boldsymbol{n}</em>{r}|^2 \cdot \sin\theta \mathrm{d} \theta \mathrm{d}\phi\<br>    &#x3D;&amp; \frac{1}{2}\sqrt{\frac{\epsilon_0\varepsilon_l}{\mu_0\mu_l}}\iint \left(|\boldsymbol{E}|^2_s+|\boldsymbol{E}|^2_p \right)k^2\cos^2\theta \cdot \mathrm{d}\Omega\<br>    &#x3D;&amp; \iint I(\theta,\phi)\mathrm{d}\Omega<br>\end{aligned}<br>$$</p>
+<p>where the emission pattern is</p>
+<p>$$<br>I(\theta,\phi)&#x3D;\frac{1}{2}\sqrt{\frac{\epsilon_0\varepsilon_l}{\mu_0\mu_l}}\left(|\boldsymbol{E}|^2_s+|\boldsymbol{E}|^2_p \right)k^2\cos^2\theta<br>$$</p>
+<h1 id="Numerical-Implementation"><a href="#Numerical-Implementation" class="headerlink" title="Numerical Implementation"></a>Numerical Implementation</h1><p>Our previous expressions are not suitable for numerical implementation since there are maximum numbers in the exponent. To let is more applicable we rewrite the expressions. We define in the upper space</p>
+<p>$$<br>\widehat{A}<em>{l,\alpha\beta}^{s&#x2F;p}&#x3D;A</em>{l,\alpha\beta}^{s,p}\exp(jk_{lz}d_{l+1}),\quad \widehat{B}<em>{l,\alpha\beta}^{s&#x2F;p}&#x3D;B</em>{l,\alpha\beta}^{s,p}\exp(-jk_{lz}d_{l+1})<br>$$</p>
+<p>and in the lower space</p>
+<p>$$<br>\widehat{A}<em>{l,\alpha\beta}^{s&#x2F;p}&#x3D;A</em>{l,\alpha\beta}^{s,p}\exp(jk_{lz}d_{l}),\quad \widehat{B}<em>{l,\alpha\beta}^{s&#x2F;p}&#x3D;B</em>{l,\alpha\beta}^{s,p}\exp(-jk_{lz}d_{l})<br>$$</p>
+<p>If we use these expression, The green tensor should be<br>$$<br>\begin{equation}<br>\begin{aligned}<br>G_{\alpha \beta}\left(\mathbf{r}, \mathbf{r}^{\prime}\right)&#x3D;&amp; \frac{j}{8 \pi^{2}} \iint \mathrm{d} k_{x} \mathrm{d} k_{y} \exp \left{j\left[k_{x}\left(x-x^{\prime}\right)\right.\right. \<br>&amp;\left.\left.+k_{y}\left(y-y^{\prime}\right)\right]\right} \frac{1}{k_{l z}}\left{\left[\hat{l}<em>{\alpha}\left( \pm k</em>{l z}\right) \widehat{A}<em>{l, \alpha \beta}^{s} \exp \left(j k</em>{l z} (z-z_{l})\right)\right.\right. \<br>&amp;\left.+\hat{l}<em>{\alpha}\left(\mp k</em>{l z}\right) \widehat{B}<em>{l, \alpha \beta}^{s} \exp \left(-j k</em>{l z} (z-z_{l})\right)\right] \hat{l}<em>{\beta}\left(k</em>{l z}\right) \<br>&amp;+\left[\hat{m}<em>{\alpha}\left( \pm k</em>{l z}\right) \widehat{A}<em>{l, \alpha \beta}^{p} \exp \left(j k</em>{l z} (z-z_{l})\right)\right.\<br>&amp;\left.\left.+\hat{m}<em>{\alpha}\left(\mp k</em>{l z}\right) \widehat{B}<em>{l, \alpha \beta}^{p} \exp \left(-j k</em>{l z} (z-z_{l})\right)\right] \hat{m}<em>{\beta}\left(k</em>{l z}\right)\right}<br>\end{aligned}<br>\end{equation}<br>$$<br>where $z_{l}&#x3D;d_{l+1}$ for $z&gt;z_0$ and $z_{l}&#x3D;d_{l}$ for $z&lt;z_0$. The coefficients relation between different layers can be rewritten as</p>
+<h2 id="In-the-upper-space-1"><a href="#In-the-upper-space-1" class="headerlink" title="In the upper space"></a>In the upper space</h2><p>$$<br>\widehat{A}<em>{l+1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[\widehat{A}</em>{l,\alpha\beta}^{s&#x2F;p}e^{jk_{lz}(d_{l+1}-d_{l})}+R_{(l+1)l}^{s&#x2F;p}\widehat{B}<em>{l,\alpha\beta}^{s&#x2F;p} e^{-jk</em>{lz}(d_{l+1}-d_{l})}\right]<br>$$</p>
+<p>$$<br>\widehat{B}<em>{l+1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[R</em>{(l+1)l}^{s&#x2F;p}\widehat{A}<em>{l,\alpha\beta}^{s&#x2F;p}e^{jk</em>{lz}(d_{l+1}-d_{l})}+\widehat{B}<em>{l,\alpha\beta}^{s&#x2F;p}e^{-jk</em>{lz}(d_{l+1}-d_{l})}\right]<br>$$</p>
+<p>where</p>
+<p>$$<br>\gamma^{s}&#x3D;\frac{1}{2}\frac{k_{lz}+k_{(l+1)z}}{k_{lz}}&#x3D;\frac{1}{1-R^{s}_{(l+1)l}}<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l+1}+\varepsilon_{l}k_{(l+1)z}}{k_{(l+1)z}\varepsilon_{l}}&#x3D;\frac{1}{1+R^{p}_{(l+1)l}},\quad \text {for } \quad \beta&#x3D;x,y,\quad\alpha&#x3D;x,y,z<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l+1}+\varepsilon_{l}k_{lz}}{k_{lz}\varepsilon_{l+1}}&#x3D;\frac{k_{(l+1)z}}{k_{lz}}\frac{1}{1+R^{p}_{(l+1)l}},\quad \text {for } \quad \beta&#x3D;z, \quad\alpha&#x3D;x,y,z<br>$$</p>
+<h2 id="In-the-lower-space-1"><a href="#In-the-lower-space-1" class="headerlink" title="In the lower space"></a>In the lower space</h2><p>$$<br>\widehat{A}<em>{l-1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[\widehat{A}</em>{l,\alpha\beta}^{s&#x2F;p}e^{jk_{lz}(d_{l}-d_{l-1})}+R_{(l-1)l}^{s&#x2F;p}\widehat{B}<em>{l,\alpha\beta}^{s&#x2F;p} e^{-jk</em>{lz}(d_{l}-d_{l-1})}\right]<br>$$</p>
+<p>$$<br>\widehat{B}<em>{l-1,\alpha\beta}^{s&#x2F;p}&#x3D;\gamma^{s&#x2F;p}\left[R</em>{(l-1)l}^{s&#x2F;p}\widehat{A}<em>{l,\alpha\beta}^{s&#x2F;p}e^{jk</em>{lz}(d_{l}-d_{l-1})}+\widehat{B}<em>{l,\alpha\beta}^{s&#x2F;p} e^{-jk</em>{lz}(d_{l}-d_{l-1})}\right]<br>$$</p>
+<p>where</p>
+<p>$$<br>\gamma^{s}&#x3D;\frac{1}{2}\frac{k_{lz}+k_{(l-1)z}}{k_{lz}}&#x3D;\frac{1}{1-R^{s}_{(l-1)l}}<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l-1}+\varepsilon_{l}k_{(l-1)z}}{k_{(l-1)z}\varepsilon_{l}}&#x3D;\frac{1}{1+R^{p}_{(l-1)l}},\quad \text {for } \quad \beta&#x3D;x,y,\quad\alpha&#x3D;x,y,z<br>$$</p>
+<p>$$<br>\gamma^{p}&#x3D;\frac{1}{2}\frac{k_{lz}\varepsilon_{l-1}+\varepsilon_{l}k_{(l-1)z}}{k_{lz}\varepsilon_{l}}&#x3D;\frac{k_{(l-1)z}}{k_{lz}}\frac{1}{1+R^{p}_{(l-1)l}},\quad \text {for } \quad \beta&#x3D;z, \quad\alpha&#x3D;x,y,z<br>$$</p>
+<h1 id="Relations-of-amplitudes-in-different-layers"><a href="#Relations-of-amplitudes-in-different-layers" class="headerlink" title="Relations of amplitudes in different layers"></a>Relations of amplitudes in different layers</h1><p>In this section , I will complete the derivations of the relations of $G_{\alpha,\beta}$ in different layers. The boundary conditions in each interface can be written as</p>
+<p>$$<br>\widehat{z}\times\left(\mathbf{G}^{+}-\mathbf{G}^{-}\right)&#x3D;\mathbf{0}<br>$$</p>
+<p>$$<br>\widehat{z}\cdot\left(\boldsymbol{\varepsilon}^{+} \mathbf{G}^{+}-\boldsymbol{\varepsilon}^{-}\mathbf{G}^{-}\right)&#x3D;\mathbf{0}<br>$$</p>
+<p>$$<br>\widehat{z}\times\mathbf{\nabla}\times \left(\frac{\mathbf{G}^{+}}{\mu_+}-\frac{\mathbf{G}^{-}}{\mu_{-}}\right)&#x3D;\mathbf{0}<br>$$</p>
+<p>$$<br>\widehat{z}\cdot\mathbf{\nabla} \times\left(\mathbf{G}^{+}-\mathbf{G}^{-}\right)&#x3D;\mathbf{0}<br>$$</p>
+<p>For convenience we need write the Green’s tensor into a more simple from which can be used to express the boundary conditions. We can express the total green tensor as</p>
+<p>$$<br>\mathbf{G}&#x3D;\frac{j}{8 \pi^{2}}\iint \mathrm{d} k_{x} \mathrm{d} k_{y} \exp \left{j\left[k_{x}\left(x-x^{\prime}\right)+k_{y}\left(y-y^{\prime}\right)\right]\right}\left[F_{A}\odot A \cdot e^{jk_{lz}z}+F_{B}\odot B \cdot e^{-jk_{lz}z}\right]<br>$$<br>where $F_{A&#x2F;B}$ is the coefficients before A,B. Since only the component $k_{lz},k_{l}$ is related to material properties, we could write $F_{A&#x2F;B}$ in a more simple form as </p>
+<p>$$<br>F_{A&#x2F;B}&#x3D;U_{A&#x2F;B}\cdot V_{A&#x2F;B}<br>$$<br>where $U_{A&#x2F;B}$ contains only the coefficients without $k_{lz},\varepsilon$. We write the explicit form for each as follows.</p>
+<h2 id="S-polarized-light-upper-x2F-lower-layer"><a href="#S-polarized-light-upper-x2F-lower-layer" class="headerlink" title="S polarized light upper&#x2F;lower layer"></a>S polarized light upper&#x2F;lower layer</h2><p>$$<br>U_{A&#x2F;B}^{s\uparrow\downarrow}&#x3D;\frac{1}{\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{k_{y}^{2}} &amp; {-k_{x} k_{y}} &amp; {0} \ {-k_{x} k_{y}} &amp; {k_{x}^{2}} &amp; {0} \ {0} &amp; {0} &amp; {0}\end{array}\right],V_{A&#x2F;B}^{s\uparrow\downarrow}&#x3D;\left[\begin{array}{ccc}{1} &amp; {1} &amp; {1} \ {1} &amp; {1} &amp; {1}\ {1} &amp; {1} &amp; {1}\end{array}\right]\frac{1}{k_{lz}}<br>$$</p>
+<h2 id="P-polarized-light-upper-x2F-lower-layer"><a href="#P-polarized-light-upper-x2F-lower-layer" class="headerlink" title="P polarized light upper&#x2F;lower layer"></a>P polarized light upper&#x2F;lower layer</h2><p>$$<br>\begin{aligned}<br>U_{A}^{p\uparrow\downarrow}&amp;&#x3D;\frac{1}{\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{\pm k_{x}^{2} } &amp; \pm {k_{x} k_{y} } &amp; \mp{k_{x}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    \pm {k_{x} k_{y} } &amp; \pm {k_{y}^{2} } &amp; \mp{ k_{y}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    { - k_{x}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp; - { k_{y}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp;  {\left(k_{x}^{2}+k_{y}^{2}\right)^{2} }\end{array}\right]\<br>U_{B}^{p\uparrow\downarrow}&amp;&#x3D;\frac{1}{\left(k_{x}^{2}+k_{y}^{2}\right)}\left[\begin{array}{ccc}{\pm k_{x}^{2} } &amp; \pm {k_{x} k_{y} } &amp; \mp{k_{x}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    \pm {k_{x} k_{y} } &amp; \pm {k_{y}^{2} } &amp; \mp{ k_{y}\left(k_{x}^{2}+k_{y}^{2}\right)} \<br>    { - k_{x}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp; - { k_{y}\left(k_{x}^{2}+k_{y}^{2}\right)} &amp;  {\left(k_{x}^{2}+k_{y}^{2}\right)^{2} }\end{array}\right]\<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>V_{A}^{p\uparrow\downarrow}&amp;&#x3D;\frac{1}{k_{l}^{2}k_{lz}}\left[\begin{array}{ccc}{ k_{lz}^2} &amp;  {k_{lz}^2} &amp; k_{lz} \<br>    k_{lz}^2 &amp; k_{lz}^2 &amp; k_{lz} \<br>    k_{lz} &amp; k_{lz} &amp;  1 \end{array}\right]\<br>V_{B}^{p\uparrow\downarrow}&amp;&#x3D;\frac{1}{k_{l}^{2}k_{lz}}\left[\begin{array}{ccc}{ -k_{lz}^2} &amp;  -{k_{lz}^2} &amp; -k_{lz} \<br>    -k_{lz}^2 &amp; -k_{lz}^2 &amp; -k_{lz} \<br>    k_{lz} &amp; k_{lz} &amp;  1 \end{array}\right]\<br>\end{aligned}<br>$$</p>
+<p>Then in deriving the relations of coefficients between different layers, we can only use</p>
+<p>$$<br>\boldsymbol{G}^{‘}&#x3D;V_{A}^{s&#x2F;p,\uparrow\downarrow} A^{s&#x2F;p,\uparrow\downarrow} e^{jk_{lz}z}+V_{B}^{s&#x2F;p,\uparrow\downarrow} B^{s&#x2F;p,\uparrow\downarrow} e^{jk_{lz}z}<br>$$</p>
+<p>which is more convenient to write. For convenience, we could also write the Green’s tensor as</p>
+<p>$$<br>\boldsymbol{G}&#x3D;[\boldsymbol{G}<em>{1},\boldsymbol{G}</em>{2},\boldsymbol{G}_{3}]<br>$$</p>
+<p>so that the boundary conditions can be written as</p>
+<p>$$<br>[-(\boldsymbol{G}^{+}<em>{2i}-\boldsymbol{G}^{-}</em>{2i}),(\boldsymbol{G}^{+}<em>{1i}-\boldsymbol{G}^{-}</em>{1i}),0]^T&#x3D;0<br>    \label{eq75}<br>$$</p>
+<p>$$<br>[0,0,(\varepsilon^{+}\boldsymbol{G}^{+}<em>{3i}-\varepsilon^{-}\boldsymbol{G}^{-}</em>{3i})]^{T}&#x3D;0<br>    \label{eq76}<br>$$</p>
+<p>$$<br>\left[-(\partial_z (\boldsymbol{G}<em>{1i}^{+}&#x2F;\mu</em>{+}-\boldsymbol{G}<em>{1i}^{-}&#x2F;\mu</em>{-})-\partial_x (\boldsymbol{G}<em>{3i}^{+}&#x2F;\mu</em>{+}-\boldsymbol{G}<em>{3i}^{-}&#x2F;\mu</em>{-})),\partial_y (\boldsymbol{G}<em>{3i}^{+}&#x2F;\mu</em>{+}-\boldsymbol{G}<em>{3i}^{-}&#x2F;\mu</em>{-})-\partial_z (\boldsymbol{G}<em>{2i}^{+}&#x2F;\mu</em>{+}-\boldsymbol{G}<em>{2i}^{-}&#x2F;\mu</em>{-}),0\right]^T&#x3D;0<br>    \label{eq77}<br>$$</p>
+<p>$$<br>\left[0,0,\partial_x (\boldsymbol{G}<em>{2i}^{+}-\boldsymbol{G}</em>{2i}^{-})-\partial_y (\boldsymbol{G}<em>{1i}^{+}-\boldsymbol{G}</em>{1i}^{-})\right]^T&#x3D;0<br>    \label{eq78}<br>$$</p>
+<p>Then<br>$$<br>(F_{A2i}^{+}A^{+}<em>{2i}e^{ik</em>{z}^{+}z_{0}}+F_{B2i}^{+}B^{+}<em>{2i}e^{-ik</em>{z}^{+}z_{0}})-(F_{A2i}^{-}A^{-}<em>{2i}e^{ik</em>{z}^{-}z_{0}}+F_{B2i}^{-}B^{-}<em>{2i}e^{-ik</em>{z}^{-}z_{0}})&#x3D;0<br>\label{Eq:add70}<br>$$</p>
+<p>$$<br>(F_{A1i}^{+}A^{+}<em>{1i}e^{ik</em>{z}^{+}z_{0}}+F_{B1i}^{+}B^{+}<em>{1i}e^{-ik</em>{z}^{+}z_{0}})-(F_{A1i}^{-}A^{-}<em>{1i}e^{ik</em>{z}^{-}z_{0}}+F_{B1i}^{-}B^{-}<em>{1i}e^{-ik</em>{z}^{-}z_{0}})&#x3D;0<br>\label{Eq:add71}<br>$$</p>
+<p>$$<br>\varepsilon^{+}(F_{A3i}^{+}A^{+}<em>{3i}e^{ik</em>{z}^{+}z_{0}}+F_{B3i}^{+}B^{+}<em>{3i}e^{-ik</em>{z}^{+}z_{0}})-\varepsilon^{+}(F_{A3i}^{-}A^{-}<em>{3i}e^{ik</em>{z}^{-}z_{0}}+F_{B3i}^{-}B^{-}<em>{3i}e^{-ik</em>{z}^{-}z_{0}})&#x3D;0<br>\label{Eq:add72}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>&amp;\left[ik_{z}^{+}(F_{A1i}^{+}A^{+}<em>{1i}e^{ik</em>{z}^{+}z_{0}}-F_{B1i}^{+}B^{+}<em>{1i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;\mu_{+}-ik_{z}^{-}(F_{A1i}^{-}A^{-}<em>{1i}e^{ik</em>{z}^{-}z_{0}}-F_{B1i}^{-}B^{-}<em>{1i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;\mu_{-}\right]\<br>&amp;-ik_{x}\left[(F_{A3i}^{+}A^{+}<em>{3i}e^{ik</em>{z}^{+}z_{0}}+F_{B3i}^{+}B^{+}<em>{3i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;\mu_{+}-(F_{A3i}^{-}A^{-}<em>{3i}e^{ik</em>{z}^{-}z_{0}}+F_{B3i}^{-}B^{-}<em>{3i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;\mu_{-}\right]&#x3D;0<br>\end{aligned}<br>\end{equation}<br>\label{Eq:add73}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>&amp;\left[ik_{z}^{+}(F_{A2i}^{+}A^{+}<em>{2i}e^{ik</em>{z}^{+}z_{0}}-F_{B2i}^{+}B^{+}<em>{2i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;\mu_{+}-ik_{z}^{-}(F_{A2i}^{-}A^{-}<em>{2i}e^{ik</em>{z}^{-}z_{0}}-F_{B1i}^{-}B^{-}<em>{1i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;\mu_{-}\right]\<br>&amp;-ik_{y}\left[(F_{A3i}^{+}A^{+}<em>{3i}e^{ik</em>{z}^{+}z_{0}}+F_{B3i}^{+}B^{+}<em>{3i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;\mu_{+}-(F_{A3i}^{-}A^{-}<em>{3i}e^{ik</em>{z}^{-}z_{0}}+F_{B3i}^{-}B^{-}<em>{3i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;\mu_{-}\right]&#x3D;0<br>\end{aligned}<br>\end{equation}<br>\label{Eq:add74}<br>$$</p>
+<p>These equations  are all we have. To get the relations, we need decouple the relations for different rows.</p>
+<h3 id="S-polarized-light"><a href="#S-polarized-light" class="headerlink" title="S polarized light"></a>S polarized light</h3><p> We first use the s polarized light as an example. For S polarized light, we have<br>$$<br>k_{x}F_{A1i}+k_{y}F_{A2i}&#x3D;0,k_{x}F_{B1i}+k_{y}F_{B2i}&#x3D;0,F_{A3i}&#x3D;F_{B3i}&#x3D;0<br>$$<br>Then Eq. $\eqref{Eq:add70}$,$\eqref{Eq:add71}$,$\eqref{Eq:add72}$,$\eqref{Eq:add73}$,$\eqref{Eq:add74}$ would be<br>$$<br>(A^{+}<em>{2i}e^{ik</em>{z}^{+}z_{0}}+B^{+}<em>{2i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;k_{z}^{+}-(A^{-}<em>{2i}e^{ik</em>{z}^{-}z_{0}}+B^{-}<em>{2i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;k_{z}^{-}&#x3D;0<br>$$</p>
+<p>$$<br>(A^{+}<em>{1i}e^{ik</em>{z}^{+}z_{0}}+B^{+}<em>{1i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;k_{z}^{+}-(A^{-}<em>{1i}e^{ik</em>{z}^{-}z_{0}}+B^{-}<em>{1i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;k_{z}^{-}&#x3D;0<br>$$</p>
+<p>$$<br>(A^{+}<em>{2i}e^{ik</em>{z}^{+}z_{0}}-B^{+}<em>{2i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;\mu^{+}-(A^{-}<em>{2i}e^{ik</em>{z}^{-}z_{0}}-B^{-}<em>{2i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;\mu^{-}&#x3D;0<br>$$</p>
+<p>$$<br>(A^{+}<em>{1i}e^{ik</em>{z}^{+}z_{0}}+B^{+}<em>{1i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;\mu^{+}-(A^{-}<em>{1i}e^{ik</em>{z}^{-}z_{0}}+B^{-}<em>{1i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;\mu^{-}&#x3D;0<br>$$</p>
+<p>Then<br>$$<br>A_{\alpha i}^{+}&#x3D;\frac{k_{z}^{+}\mu_{-}+k_{z}^{-}\mu_{+}}{2k_{z}^{-}\mu_{-}}\left(A_{\alpha i}^{-}e^{i(k_{z}^{-}-k_{z}^{+})z_{0}}+\frac{k_{z}^{+}\mu_{-}-k_{z}^{-}\mu_{+}}{k_{z}^{+}\mu_{-}+k_{z}^{-}\mu_{+}}B_{\alpha i}^{-}e^{-i(k_{z}^{-}-k_{z}^{+})z_{0}}\right)<br>$$</p>
+<p>$$<br>B_{\alpha i}^{+}&#x3D;\frac{k_{z}^{+}\mu_{-}+k_{z}^{-}\mu_{+}}{2k_{z}^{-}\mu_{-}}\left(\frac{k_{z}^{+}\mu_{-}-k_{z}^{-}\mu_{+}}{k_{z}^{+}\mu_{-}+k_{z}^{-}\mu_{+}}A_{\alpha i}^{-}e^{i(k_{z}^{-}-k_{z}^{+})z_{0}}+B_{\alpha i}^{-}e^{-i(k_{z}^{-}-k_{z}^{+})z_{0}}\right)<br>$$</p>
+<p>So the relation between different layers has been derived and agree well with the reference.</p>
+<h3 id="P-polarized-light"><a href="#P-polarized-light" class="headerlink" title="P polarized light."></a>P polarized light.</h3><p>For P polarized light, the relation are more complex. We still substitute the detailed expression into Eq. $\eqref{Eq:add70}$,$\eqref{Eq:add71}$,$\eqref{Eq:add72}$,$\eqref{Eq:add73}$,$\eqref{Eq:add74}$. We still have the following relations</p>
+<p>$$<br>k_{x}F_{A1i}&#x3D;k_{y}F_{A2i},k_{x}F_{B1i}&#x3D;k_{y}F_{B2i},<br>$$<br>Still for the relation<br>$$<br>(F_{A2i}^{+}A^{+}<em>{2i}e^{ik</em>{z}^{+}z_{0}}+F_{B2i}^{+}B^{+}<em>{2i}e^{-ik</em>{z}^{+}z_{0}})-(F_{A2i}^{-}A^{-}<em>{2i}e^{ik</em>{z}^{-}z_{0}}+F_{B2i}^{-}B^{-}<em>{2i}e^{-ik</em>{z}^{-}z_{0}})&#x3D;0<br>$$</p>
+<p>$$<br>(A^{+}<em>{1i}e^{ik</em>{z}^{+}z_{0}}+B^{+}<em>{1i}e^{-ik</em>{z}^{+}z_{0}})&#x2F;k_{z}^{+}-(A^{-}<em>{1i}e^{ik</em>{z}^{-}z_{0}}+B^{-}<em>{1i}e^{-ik</em>{z}^{-}z_{0}})&#x2F;k_{z}^{-}&#x3D;0<br>$$</p>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="Dyadic-Analysis"><a href="#Dyadic-Analysis" class="headerlink" title="Dyadic Analysis"></a>Dyadic Analysis</h3><p>In this section a brief review of dyadic analysis is presented. Dyadic operations and theorems provide an effective tool for manipulation of field quantities. Dyadic notation was first introduced by Gibbs in 1884 which later appeared in literature. Consider a vector function $\vec{F}$ having three scalar component $f_{i}$ with ($i &#x3D; 1,2,3$) in a Cartesian system, that is<br>$$<br>\vec{F}&#x3D;\sum_{i&#x3D;1}^{3}f_{i}\hat{x}<em>{i}<br>$$<br>Now consider three different vector functions  $\vec{F}</em>{j}$, given by<br>$$<br>\vec{F}<em>{j}&#x3D;\sum</em>{i&#x3D;1}^{3}f_{i,j}\hat{x}<em>{i},j&#x3D;1,2,3<br>$$<br>Which constitute a dyad $\overset\leftrightarrow{F}$ given by<br>$$<br>\overset\leftrightarrow{F}&#x3D;[\vec{F}</em>{1},\vec{F}<em>{2},\vec{F}</em>{3}]&#x3D;\left[\begin{matrix}<br>f_{11} &amp; f_{12} &amp; f_{13}\<br>f_{21} &amp; f_{22} &amp; f_{23}\<br>f_{31} &amp; f_{32} &amp; f_{33}\<br>\end{matrix}\right]<br>$$<br>It should be emphasized that<br>$$<br>\hat{x}<em>{i}\hat{x}</em>{j}\neq \hat{x}<em>{j}\hat{x}</em>{i} \quad \text{for} i\neq j<br>$$<br>In general a dyad can be formed from the product of two arbitrary vectors  $\vec{a}$ and $\vec{b}$ to form $\overset\leftrightarrow{F}&#x3D;\vec{a}\vec{b}$ . Components of $\overset\leftrightarrow{F}$ can be obtained from a matrix product of a denoted by a 3 × 1 matrix with 1 × 3 matrix. Note that the converse may not be necessarily true. That is, a general dyad may not be expressiable in terms of product of two vector.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[^ref1]: <a target="_blank" rel="noopener" href="https://link.aps.org/doi/10.1103/PhysRevE.62.5797">Accurate and efficient computation of the Green’s tensor for stratified media</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io">Zhaohua Tian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io/2020/06/22/A_En_DipoleInMultiLayerCartesian/">https://knifelees3.github.io/2020/06/22/A_En_DipoleInMultiLayerCartesian/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Physics/">Physics</a><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200223215829792_1734.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/06/26/C_%E6%95%99%E7%A8%8B_Windows%E4%B8%AD%E7%9A%84ubuntu%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Meep/" title="Meep教程(1):在Ubuntu或者Windows的Ubuntu子系统的安装"><img class="cover" src="https://meep.readthedocs.io/en/latest/images/Meep-banner.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Meep教程(1):在Ubuntu或者Windows的Ubuntu子系统的安装</div></div></a></div><div class="next-post pull-right"><a href="/2020/06/21/C_%E6%95%99%E7%A8%8B_%E5%A6%82%E4%BD%95%E8%AE%A9win10%E7%94%B5%E8%84%91%E6%8C%89%E7%99%BE%E5%88%86%E6%AF%94%E6%98%BE%E7%A4%BA%E7%94%B5%E9%87%8F/" title="win10 按百分比显示电量的图标软件"><img class="cover" src="https://cdn.guidingtech.com/imager/assets/198152/Windows-10-Always-Show-Battery-Percentage-Featured_4d470f76dc99e18ad75087b1b8410ea9.png?1529074864" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">win10 按百分比显示电量的图标软件</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/08/20/A_En_PlaneWaveInputDirectionsViaPort/" title="Direction in port-Plane wave input via port in COMSOL"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/InputDirections.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-20</div><div class="title">Direction in port-Plane wave input via port in COMSOL</div></div></a></div><div><a href="/2020/08/20/A_En__Plane-Wave-Transmission-and-Its-Relization-in-COMSOL/" title="Plane wave&#39;s transmission in a substate structure and its theoretical realization in COMSOL"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200220133639360_19041.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-20</div><div class="title">Plane wave&#39;s transmission in a substate structure and its theoretical realization in COMSOL</div></div></a></div><div><a href="/2020/02/02/A_En_HowToEmbedAnimationIntoJupyterNotebook/" title="How To Embed Animation Into Jupyter Notebook"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200202_HarmonicJupyterBook.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-02</div><div class="title">How To Embed Animation Into Jupyter Notebook</div></div></a></div><div><a href="/2020/06/20/A_En_DipoleEmissionNearSphere/" title="Dipole&#39;s Emission Near Sphere"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200107214942441_16601.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-20</div><div class="title">Dipole&#39;s Emission Near Sphere</div></div></a></div><div><a href="/2019/04/17/A_En_MATLAB_ParallelComputing/" title="MATLAB Parallel Computing Summary"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-17</div><div class="title">MATLAB Parallel Computing Summary</div></div></a></div><div><a href="/2020/03/11/A_En_Python-Deep-Learinging-I-Recognize-Handwritten-Digits/" title="Neural Networks Learning I -Recognize Handwritten Digits"><img class="cover" src="http://michaelnielsen.org/images/mn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-11</div><div class="title">Neural Networks Learning I -Recognize Handwritten Digits</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/upload/ket.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zhaohua Tian</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.zhihu.com/people/knife-lee-94"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">ZhaohuaTian's personal blog/个人小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Extra-words"><span class="toc-number">1.1.</span> <span class="toc-text">Extra words</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Green-tensor-expression"><span class="toc-number">2.</span> <span class="toc-text">Green tensor expression</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#In-the-upper-space"><span class="toc-number">2.1.</span> <span class="toc-text">In the upper space</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-the-lower-space"><span class="toc-number">2.2.</span> <span class="toc-text">In the lower space</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-field-expression-and-emission-pattern"><span class="toc-number">3.</span> <span class="toc-text">The field expression and emission pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Numerical-Implementation"><span class="toc-number">4.</span> <span class="toc-text">Numerical Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#In-the-upper-space-1"><span class="toc-number">4.1.</span> <span class="toc-text">In the upper space</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-the-lower-space-1"><span class="toc-number">4.2.</span> <span class="toc-text">In the lower space</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Relations-of-amplitudes-in-different-layers"><span class="toc-number">5.</span> <span class="toc-text">Relations of amplitudes in different layers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#S-polarized-light-upper-x2F-lower-layer"><span class="toc-number">5.1.</span> <span class="toc-text">S polarized light upper&#x2F;lower layer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P-polarized-light-upper-x2F-lower-layer"><span class="toc-number">5.2.</span> <span class="toc-text">P polarized light upper&#x2F;lower layer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S-polarized-light"><span class="toc-number">5.2.1.</span> <span class="toc-text">S polarized light</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P-polarized-light"><span class="toc-number">5.2.2.</span> <span class="toc-text">P polarized light.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appendix"><span class="toc-number">5.3.</span> <span class="toc-text">Appendix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dyadic-Analysis"><span class="toc-number">5.3.1.</span> <span class="toc-text">Dyadic Analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.4.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/08/C_%E6%95%99%E7%A8%8B_MATLAB%E7%94%9F%E6%88%90GIF%E5%8A%A8%E5%9B%BE/" title="MATLAB生成GIF动图"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/untitled-20201224.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MATLAB生成GIF动图"/></a><div class="content"><a class="title" href="/2022/10/08/C_%E6%95%99%E7%A8%8B_MATLAB%E7%94%9F%E6%88%90GIF%E5%8A%A8%E5%9B%BE/" title="MATLAB生成GIF动图">MATLAB生成GIF动图</a><time datetime="2022-10-08T03:29:30.000Z" title="Created 2022-10-08 11:29:30">2022-10-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/08/E_%E7%89%A9%E7%90%86-%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%8E%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E5%8E%86%E5%8F%B2/" title="量子计算与量子信息（一）量子计算有关的历史"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/2022/图片10.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="量子计算与量子信息（一）量子计算有关的历史"/></a><div class="content"><a class="title" href="/2022/08/08/E_%E7%89%A9%E7%90%86-%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%B8%8E%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E5%8E%86%E5%8F%B2/" title="量子计算与量子信息（一）量子计算有关的历史">量子计算与量子信息（一）量子计算有关的历史</a><time datetime="2022-08-08T08:56:30.000Z" title="Created 2022-08-08 16:56:30">2022-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/04/B_%E9%9A%8F%E7%AC%94_%E5%85%B3%E4%BA%8E%E5%B7%AE%E7%94%9F%E6%96%87%E5%85%B7%E5%A4%9A/" title="关于《差生文具多》"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/Snipaste_2022-07-04_14-56-55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于《差生文具多》"/></a><div class="content"><a class="title" href="/2022/07/04/B_%E9%9A%8F%E7%AC%94_%E5%85%B3%E4%BA%8E%E5%B7%AE%E7%94%9F%E6%96%87%E5%85%B7%E5%A4%9A/" title="关于《差生文具多》">关于《差生文具多》</a><time datetime="2022-07-04T06:54:30.000Z" title="Created 2022-07-04 14:54:30">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/06/C_%E6%95%99%E7%A8%8B_Mathematica%E9%A2%9C%E8%89%B2%E5%9B%BE%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="Mathematica颜色图使用技巧"><img src="https://i.stack.imgur.com/xBiYi.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mathematica颜色图使用技巧"/></a><div class="content"><a class="title" href="/2022/06/06/C_%E6%95%99%E7%A8%8B_Mathematica%E9%A2%9C%E8%89%B2%E5%9B%BE%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="Mathematica颜色图使用技巧">Mathematica颜色图使用技巧</a><time datetime="2022-06-06T08:54:30.000Z" title="Created 2022-06-06 16:54:30">2022-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/02/C_%E6%95%99%E7%A8%8B_%E5%8D%8E%E4%B8%BA%E8%BD%AF%E4%BB%B6%E6%9C%BA%E8%80%83%E9%A2%98%E7%9B%AE/" title="华为软件机考题目"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="华为软件机考题目"/></a><div class="content"><a class="title" href="/2022/06/02/C_%E6%95%99%E7%A8%8B_%E5%8D%8E%E4%B8%BA%E8%BD%AF%E4%BB%B6%E6%9C%BA%E8%80%83%E9%A2%98%E7%9B%AE/" title="华为软件机考题目">华为软件机考题目</a><time datetime="2022-06-02T06:26:30.000Z" title="Created 2022-06-02 14:26:30">2022-06-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Zhaohua Tian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
