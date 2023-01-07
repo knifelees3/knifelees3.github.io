@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2023/01/07/C_%E6%95%99%E7%A8%8B_COMSOL-port%E8%BE%93%E5%85%A5%E8%A7%92%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%94%B5%E5%9C%BA%E8%AE%BE%E7%BD%AE/"/>
-      <url>/2023/01/07/C_%E6%95%99%E7%A8%8B_COMSOL-port%E8%BE%93%E5%85%A5%E8%A7%92%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%94%B5%E5%9C%BA%E8%AE%BE%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<p>关于COMSOL Port设置，自COMSOL5.4以后，用Port设置相应的电场输入可以直接通过给定的<code>azimuth angle</code>  ($\alpha<em>{1}$)和 <code>elevation angle</code> $\alpha</em>{2}$ 来表示。<br>但是注意设置的时候需要关注电场和输入角度的关系。<br>我们输入的电场往往是有偏振的，比如最简单的平面波<br>![[Attachment/20200220133639360_19041 1.png]]</p><p>平面波就有S偏振或者P偏振，S偏振是垂直纸面的，而P偏振是在面内的，这两种波的电场都是与波矢垂直的，但是偏振方向则是互相垂直的，按照上图大的结构，两种偏振的输入电场应该写为</p><script type="math/tex; mode=display">\begin{aligned}\mathbf{E}_{1}^{\text{s}} & = E_{0}[0,1,0],\\\mathbf{E}_{1}^{\text{p}} &= E_{0}[-\sin\theta_{1},0,\cos\theta_{1}]\end{aligned}</script><p>所以在COMSOL中设置的时候，就需要搞清楚，哪一个是波矢的入射方向，相关角度是相对于那个方向来定义的？经过我查阅一些说明文档，以及自己测试，总结了输入的角度以及电场方向的设置规则。</p><p>![[Attachment/COMSOLScreenShot.png]]</p><h2 id="波矢方向和角度的关系"><a href="#波矢方向和角度的关系" class="headerlink" title="波矢方向和角度的关系"></a>波矢方向和角度的关系</h2><p>首先如图（a）所示，</p><ol><li>假设我们设置的是从上向下($z$ 到$-z$)输入一个波（不一定是垂直输入），那么输入的波矢方向是朝下的，此时： <strong>$\alpha<em>{2}$表示的是波矢方向和$-z$的夹角，$\alpha</em>{1}$表示的是波矢$\mathbf{k}$在$x-y$平面内的投影$k\sin\alpha_{2}$和$x$正方向的投影；</strong></li><li>假设我们设置的是从上向下($-z$ 到$z$)输入一个波（不一定是垂直输入），那么输入的波矢方向是朝上的，此时： **$\alpha<em>{2}$表示的是波矢方向和$z$的夹角，$\alpha</em>{1}$表示的是波矢$\mathbf{k}$在$x-y$平面内的投影$k\sin\alpha<em>{2}$和$y$正方向的投影；<br>注意此处，由于上下方向的区别，使得$\alpha</em>{1}$的定义是不同的，那为什么要这样呢？<br>（英文版有说明。）。<br>图(b),(c)的绿色箭头表示的就是从$z$到$-z$输入时波矢的方向。</li></ol><h2 id="电场方向和角度的关系"><a href="#电场方向和角度的关系" class="headerlink" title="电场方向和角度的关系"></a>电场方向和角度的关系</h2><p>另外一个是电场方向，这是非常容易出错的，假设直接根据定好的输入方向来定义电场方向，那么是会出错的，因为模式的波矢方向和输入的能量的波矢方向是不一样的！<br>模式的波矢方向总是朝外的，我也不知道为什么····<br>COMSOL是可以绘制能量的输入方向以及模式的波矢方向的。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>三维偶极取向：三维箭头的绘制</title>
       <link href="/2023/01/07/C_%E6%95%99%E7%A8%8B_%E4%B8%89%E7%BB%B4%E5%81%B6%E6%9E%81%E5%8F%96%E5%90%912%E7%AE%AD%E5%A4%B4%E7%BB%98%E5%88%B6/"/>
       <url>/2023/01/07/C_%E6%95%99%E7%A8%8B_%E4%B8%89%E7%BB%B4%E5%81%B6%E6%9E%81%E5%8F%96%E5%90%912%E7%AE%AD%E5%A4%B4%E7%BB%98%E5%88%B6/</url>
@@ -42,7 +29,7 @@
     
     
     <entry>
-      <title>win10 按百分比显示电量的图标软件</title>
+      <title>Mathematica和MATLAB绘图模板</title>
       <link href="/2023/01/07/C_%E6%95%99%E7%A8%8B_Mathematica%E5%92%8CMATLAB%E7%BB%98%E5%9B%BE%E6%A8%A1%E6%9D%BF/"/>
       <url>/2023/01/07/C_%E6%95%99%E7%A8%8B_Mathematica%E5%92%8CMATLAB%E7%BB%98%E5%9B%BE%E6%A8%A1%E6%9D%BF/</url>
       
