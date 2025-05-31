@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux服务器常见命令 | Zhaohua Tian's Web</title><meta name="author" content="Zhaohua Tian"><meta name="copyright" content="Zhaohua Tian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Ubuntu基本命令首先是一些基本的命令，这些命令是最常用到的。 切换文件夹123cd &lt;folder name&gt; # 移动到某一文件夹cd &lt;.&#x2F;folder name&gt; # 移动到当前某一文件夹cd &lt;..&#x2F;folder name&gt; # 移动到上一层目录的某一文件夹 显示文件夹信息12345ls # 列出当前文件夹下所有文件、文件夹ll # 列出当前文件夹下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux服务器常见命令">
+<meta property="og:url" content="https://knifelees3.github.io/2019/12/16/C_%E6%95%99%E7%A8%8B_Ubuntu_%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Zhaohua Tian&#39;s Web">
+<meta property="og:description" content="Ubuntu基本命令首先是一些基本的命令，这些命令是最常用到的。 切换文件夹123cd &lt;folder name&gt; # 移动到某一文件夹cd &lt;.&#x2F;folder name&gt; # 移动到当前某一文件夹cd &lt;..&#x2F;folder name&gt; # 移动到上一层目录的某一文件夹 显示文件夹信息12345ls # 列出当前文件夹下所有文件、文件夹ll # 列出当前文件夹下">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png%E6%9C%8D%E5%8A%A1%E5%99%A8">
+<meta property="article:published_time" content="2019-12-16T11:55:30.000Z">
+<meta property="article:modified_time" content="2021-07-26T06:38:30.000Z">
+<meta property="article:author" content="Zhaohua Tian">
+<meta property="article:tag" content="Ubuntu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png%E6%9C%8D%E5%8A%A1%E5%99%A8"><link rel="shortcut icon" href="/upload/ket.png"><link rel="canonical" href="https://knifelees3.github.io/2019/12/16/C_%E6%95%99%E7%A8%8B_Ubuntu_%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?7c4710045c846acddf6f6813e3d1fa3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux服务器常见命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-26 14:38:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/upload/ket.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png服务器')"><nav id="nav"><span id="blog-info"><a href="/" title="Zhaohua Tian's Web"><span class="site-name">Zhaohua Tian's Web</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux服务器常见命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2019-12-16T11:55:30.000Z" title="Created 2019-12-16 19:55:30">2019-12-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-07-26T06:38:30.000Z" title="Updated 2021-07-26 14:38:30">2021-07-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>7min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux服务器常见命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>首先是一些基本的命令，这些命令是最常用到的。</p>
+<h3 id="切换文件夹"><a href="#切换文件夹" class="headerlink" title="切换文件夹"></a>切换文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;folder name&gt; <span class="comment"># 移动到某一文件夹</span></span><br><span class="line"><span class="built_in">cd</span> &lt;./folder name&gt; <span class="comment"># 移动到当前某一文件夹</span></span><br><span class="line"><span class="built_in">cd</span> &lt;../folder name&gt; <span class="comment"># 移动到上一层目录的某一文件夹</span></span><br></pre></td></tr></table></figure>
+<h3 id="显示文件夹信息"><a href="#显示文件夹信息" class="headerlink" title="显示文件夹信息"></a>显示文件夹信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="comment"># 列出当前文件夹下所有文件、文件夹</span></span><br><span class="line">ll <span class="comment"># 列出当前文件夹下的文件、文件夹以及权限信息</span></span><br><span class="line"><span class="built_in">ls</span> -lrth <span class="comment"># 按时间顺序列出当前文件夹下的所有文件、文件夹的大小、可执行权限</span></span><br><span class="line"><span class="built_in">ls</span> &lt;folder name&gt; <span class="comment">#列出某一文件夹下的文件信息</span></span><br><span class="line"><span class="built_in">pwd</span> <span class="comment">#显示当前文件夹</span></span><br></pre></td></tr></table></figure>
+<h3 id="复制、删除、重命名文件"><a href="#复制、删除、重命名文件" class="headerlink" title="复制、删除、重命名文件"></a>复制、删除、重命名文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> &lt;file name&gt; <span class="comment">#删除某一文件</span></span><br><span class="line"><span class="built_in">rm</span> -r &lt;foler name&gt; <span class="comment"># 删除某一文件夹</span></span><br><span class="line"><span class="built_in">rm</span> ./* <span class="comment">#删除当前文件夹下所有文件</span></span><br><span class="line"><span class="built_in">rm</span> ./*.sh <span class="comment">#删除当前文件夹下以 .sh结尾的所有文件,这是一种模糊匹配的方式，非常高效</span></span><br><span class="line"><span class="built_in">cp</span> &lt;current file&gt; &lt;destination folder&gt; <span class="comment"># 复制文件到目标文件夹,</span></span><br><span class="line"><span class="built_in">cp</span> -r &lt;current folder&gt; &lt;destination folder&gt; <span class="comment"># 同样的，加上-r表示对文件夹的操作</span></span><br><span class="line"><span class="built_in">mv</span> &lt;file name&gt; &lt;new file name&gt; <span class="comment"># 重命名文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi &lt;file name&gt; <span class="comment"># 用来查看、修改文件内容，当然该命令不是那么容易用，需要了解vi命令</span></span><br><span class="line">nano &lt;file name&gt; <span class="comment">#用来查看、修改文件内容，比vi简单</span></span><br><span class="line">gedit &lt;file name&gt;  <span class="comment">#用来查看、修改文件内容，需要图形界面</span></span><br></pre></td></tr></table></figure>
+<h3 id="脚本文件的书写、运行"><a href="#脚本文件的书写、运行" class="headerlink" title="脚本文件的书写、运行"></a>脚本文件的书写、运行</h3><p>脚本文件一般格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">&lt;<span class="built_in">command</span> 1&gt; &amp;&amp; <span class="comment"># 有两个&amp;代表运行完该命令之后再执行后面的命令</span></span><br><span class="line">&lt;<span class="built_in">command</span> 2&gt; &amp; <span class="comment"># 一个&amp;代表依次执行，不管命令是否允许完毕</span></span><br><span class="line">&lt;<span class="built_in">command</span> 2&gt; &amp;</span><br></pre></td></tr></table></figure>
+<p>赋予文件可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x &lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>运行脚本文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>如果想后台运行，可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nohup</span> &lt;file name&gt; &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="服务器管理员重要命令"><a href="#服务器管理员重要命令" class="headerlink" title="服务器管理员重要命令"></a>服务器管理员重要命令</h2><h3 id="远程重启或者关机"><a href="#远程重启或者关机" class="headerlink" title="远程重启或者关机"></a>远程重启或者关机</h3><p>立即远程重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -r now</span><br></pre></td></tr></table></figure>
+<p>立即远程关机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -h now</span><br></pre></td></tr></table></figure>
+<h3 id="添加或者删除用户"><a href="#添加或者删除用户" class="headerlink" title="添加或者删除用户"></a>添加或者删除用户</h3><p>添加用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<p>然后按照提示输入密码等信息即可。此种方法创建用户之后，可以在home目录生成一个和用户名同名字的文件夹。</p>
+<p>删除用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel -r &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<p>此种方法删除用户之后，home目录和用户名同名字的文件夹也会删。</p>
+<h3 id="查看服务器的硬盘大小"><a href="#查看服务器的硬盘大小" class="headerlink" title="查看服务器的硬盘大小"></a>查看服务器的硬盘大小</h3><p>查看运行内存大小, 以Gb为单位</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -g </span><br></pre></td></tr></table></figure>
+<p>或者是<code>free -m</code>（以m为单位），<code>cat /proc/meminfo</code>（详细信息）</p>
+<p>查看磁盘占用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -hl </span><br></pre></td></tr></table></figure>
+<p>查看当前文件夹的大小</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> --max-depth=1 -h</span><br></pre></td></tr></table></figure>
+<p>查看单个文件夹或目录大小</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -sh &lt;folername&gt;</span><br></pre></td></tr></table></figure>
+<p>以下是一些运行结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root@hwsrv-645334:~<span class="comment"># free -g</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:              0           0           0           0           0           0</span><br><span class="line">Swap:             0           0           0</span><br><span class="line">root@hwsrv-645334:~<span class="comment"># free -m</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:            992          46         178          10         767         733</span><br><span class="line">Swap:             0           0           0</span><br><span class="line">root@hwsrv-645334:~<span class="comment"># cat /proc/meminfo</span></span><br><span class="line">MemTotal:        1016012 kB</span><br><span class="line">MemFree:          182528 kB</span><br><span class="line">MemAvailable:     750804 kB</span><br><span class="line">Buffers:          145532 kB</span><br><span class="line">Cached:           471356 kB</span><br><span class="line">SwapCached:            0 kB</span><br><span class="line">Active:           427940 kB</span><br><span class="line">Inactive:         217128 kB</span><br><span class="line">Active(anon):      31112 kB</span><br><span class="line">Inactive(anon):    10340 kB</span><br><span class="line">Active(file):     396828 kB</span><br><span class="line">Inactive(file):   206788 kB</span><br><span class="line">Unevictable:        3660 kB</span><br><span class="line">Mlocked:            3660 kB</span><br><span class="line">SwapTotal:             0 kB</span><br><span class="line">SwapFree:              0 kB</span><br><span class="line">Dirty:                16 kB</span><br><span class="line">Writeback:             0 kB</span><br><span class="line">AnonPages:         31876 kB</span><br><span class="line">Mapped:            22608 kB</span><br><span class="line">Shmem:             10848 kB</span><br><span class="line">Slab:             169512 kB</span><br><span class="line">SReclaimable:     148692 kB</span><br><span class="line">SUnreclaim:        20820 kB</span><br><span class="line">KernelStack:        1920 kB</span><br><span class="line">PageTables:         2444 kB</span><br><span class="line">NFS_Unstable:          0 kB</span><br><span class="line">Bounce:                0 kB</span><br><span class="line">WritebackTmp:          0 kB</span><br><span class="line">CommitLimit:      508004 kB</span><br><span class="line">Committed_AS:     259952 kB</span><br><span class="line">VmallocTotal:   34359738367 kB</span><br><span class="line">VmallocUsed:           0 kB</span><br><span class="line">VmallocChunk:          0 kB</span><br><span class="line">HardwareCorrupted:     0 kB</span><br><span class="line">AnonHugePages:      4096 kB</span><br><span class="line">CmaTotal:              0 kB</span><br><span class="line">CmaFree:               0 kB</span><br><span class="line">HugePages_Total:       0</span><br><span class="line">HugePages_Free:        0</span><br><span class="line">HugePages_Rsvd:        0</span><br><span class="line">HugePages_Surp:        0</span><br><span class="line">Hugepagesize:       2048 kB</span><br><span class="line">DirectMap4k:       46960 kB</span><br><span class="line">DirectMap2M:     1001472 kB</span><br><span class="line">DirectMap1G:           0 kB</span><br><span class="line">root@hwsrv-645334:~<span class="comment"># df -hl</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">udev            487M     0  487M   0% /dev</span><br><span class="line">tmpfs           100M   11M   89M  11% /run</span><br><span class="line">/dev/sda1        30G  2.1G   27G   7% /</span><br><span class="line">tmpfs           497M     0  497M   0% /dev/shm</span><br><span class="line">tmpfs           5.0M     0  5.0M   0% /run/lock</span><br><span class="line">tmpfs           497M     0  497M   0% /sys/fs/cgroup</span><br><span class="line">tmpfs           100M     0  100M   0% /run/user/0</span><br></pre></td></tr></table></figure>
+<h3 id="查看服务器的核心数等"><a href="#查看服务器的核心数等" class="headerlink" title="查看服务器的核心数等"></a>查看服务器的核心数等</h3><p>查看CPU个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/cpuinfo |grep <span class="string">"physical id"</span>|<span class="built_in">sort</span>|<span class="built_in">uniq</span>|<span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+<p>查看每个物理CPU含有的核心个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/cpuinfo |grep <span class="string">"cpu cores"</span>|<span class="built_in">uniq</span>|<span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+<p>查看每个CPU核心含有的线程数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/cpuinfo |grep <span class="string">"processor"</span>|<span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+<p>那么cpu支持的线程数为 cpu数目 <em> 每个cpu含有的核心数目</em> 每个核心含有的线程数</p>
+<h3 id="重启服务器网络"><a href="#重启服务器网络" class="headerlink" title="重启服务器网络"></a>重启服务器网络</h3><p>可以输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/network restart</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/network restart</span><br></pre></td></tr></table></figure>
+<h3 id="给某一用户管理员权限"><a href="#给某一用户管理员权限" class="headerlink" title="给某一用户管理员权限"></a>给某一用户管理员权限</h3><p>只需要修改<code>/etc/sudousers</code>文件即可，该文件默认是不可编辑的，首先得更改其权限为可写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +w /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>读、写、执行权限可以通过<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.507ex" role="img" focusable="false" viewBox="0 -666 778 666"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="B1" d="M56 320T56 333T70 353H369V502Q369 651 371 655Q376 666 388 666Q402 666 405 654T409 596V500V353H707Q722 345 722 333Q722 320 707 313H409V40H707Q722 32 722 20T707 0H70Q56 7 56 20T70 40H369V313H70Q56 320 56 333Z"></path></g></g></g></svg></mjx-container><code>rwx</code>来控制，其文件内容大致如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line">Defaults        env_reset</span><br><span class="line">Defaults        mail_badpass</span><br><span class="line">Defaults        secure_path=<span class="string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Host alias specification</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User alias specification</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Cmnd alias specification</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User privilege specification</span></span><br><span class="line"></span><br><span class="line">root    ALL=(ALL:ALL) ALL</span><br><span class="line"></span><br><span class="line"><span class="comment"># Members of the admin group may gain root privileges</span></span><br><span class="line"></span><br><span class="line">%admin ALL=(ALL) ALL</span><br><span class="line"></span><br><span class="line"><span class="comment"># Allow members of group sudo to execute any command</span></span><br><span class="line"></span><br><span class="line">%sudo   ALL=(ALL:ALL) ALL</span><br><span class="line"></span><br><span class="line"><span class="comment"># See sudoers(5) for more information on "#include" directives:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#includedir /etc/sudoers.d</span></span><br></pre></td></tr></table></figure>
+<p>只需要在 <code>root    ALL=(ALL:ALL) ALL</code>一行下按照同样的方式输入对应的用户名即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;username&gt; ALL=(ALL:ALL) ALL </span><br></pre></td></tr></table></figure>
+<p>保存退出以后，将文件更改问只读</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> -w /etc/sudoers</span><br></pre></td></tr></table></figure>
+<h3 id="修改用户的密码"><a href="#修改用户的密码" class="headerlink" title="修改用户的密码"></a>修改用户的密码</h3><p>自己修改自己的，输入<code>passwd</code>之后，输入新密码即可。如果时要通过root用户该其他人的密码，则需要</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<p>输入root密码之后，即可修改对应用户的密码了。</p>
+<h3 id="添加到环境变量的方法"><a href="#添加到环境变量的方法" class="headerlink" title="添加到环境变量的方法"></a>添加到环境变量的方法</h3><p>为了可以在命令行使用，还需要将安装的软件执行文件添加到环境变量。给某个用户和给所有用户添加环境变量是不一样的。</p>
+<h4 id="A-用于当前用户："><a href="#A-用于当前用户：" class="headerlink" title="A.用于当前用户："></a>A.用于当前用户：</h4><p>在对应用户主目录下有一个 .bashrc 隐藏文件，可以在此文件中加入 PATH 的设置如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>加入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/local/MATLAB/R2018a/bin/:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>如果要加入多个路径，只要：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=&lt;你要加入的路径1&gt;:&lt;你要加入的路径2&gt;: ...... :<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>当中每个路径要以冒号分隔。这样每次登录都会生效，此时还需要注销再登录或者使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p> 使得更改生效</p>
+<h4 id="B-用于所有用户："><a href="#B-用于所有用户：" class="headerlink" title="B.用于所有用户："></a>B.用于所有用户：</h4><p>如果需要环境变量更改对所有用户有效，那么需要更改“/etc/profile”文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br></pre></td></tr></table></figure>
+<p>在其中加入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=&lt;你要加入的路径&gt;:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>终端输入：echo $PATH 可以查看环境变量此时还需要注销再登录或者使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>使得更改生效。</p>
+<h3 id="安装多个版本软件"><a href="#安装多个版本软件" class="headerlink" title="安装多个版本软件"></a>安装多个版本软件</h3><p> 有时候我们可能需要安装COMSOL或者MATLAB的多个版本，多个版本软件的安装目录默认是不冲突的，如MATLAB在“/usr/local/MATLAB”下会有“R2018a”或者“R2018b”来区分，COMSOL在“/usr/local/”下有“comsol51”和“comsol54”加以区分。当我们将安装路径加入环境变量之后，由于启动的文件名相同，比如都是“comsol”，为了区别出到底是想启动COMSOL的哪个版本。我们可以将文件名做更改，比如将comsol5.4版本的bin目录下的comsol文件改名为comsol54:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mv</span> /usr/local/comsol54/multiphysics/bin/comsol /usr/local/comsol54/multiphysics/bin/comsol54</span><br></pre></td></tr></table></figure>
+<p>这样我们在命令行输入“comsol54”就可以指定启动COMSOL5.4版本了。其他软件的做法也类似。</p>
+<h3 id="安装或者卸载软件-（ubuntu）"><a href="#安装或者卸载软件-（ubuntu）" class="headerlink" title="安装或者卸载软件 （ubuntu）"></a>安装或者卸载软件 （ubuntu）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install</span></span><br><span class="line">sudo dpkg -i &lt;package name&gt;</span><br><span class="line"><span class="comment"># uninstall</span></span><br><span class="line">sudo apt-get purge &lt;package name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="挂载ISO文件到磁盘"><a href="#挂载ISO文件到磁盘" class="headerlink" title="挂载ISO文件到磁盘"></a>挂载ISO文件到磁盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount</span></span><br><span class="line">mount -o loop /filename.iso /mnt/tmp</span><br><span class="line"><span class="comment"># umount</span></span><br><span class="line">umount /mnt/tmp</span><br></pre></td></tr></table></figure>
+<h3 id="查看不同用户执行脚本"><a href="#查看不同用户执行脚本" class="headerlink" title="查看不同用户执行脚本"></a>查看不同用户执行脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep bash</span><br></pre></td></tr></table></figure>
+<h3 id="等待某一程序运行完毕之后接着运行"><a href="#等待某一程序运行完毕之后接着运行" class="headerlink" title="等待某一程序运行完毕之后接着运行"></a>等待某一程序运行完毕之后接着运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ps -p 123455</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">sleep</span> 5m</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">bash comsolscript.sh</span><br></pre></td></tr></table></figure>
+<h3 id="更改某文件夹的拥有者"><a href="#更改某文件夹的拥有者" class="headerlink" title="更改某文件夹的拥有者"></a>更改某文件夹的拥有者</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> -R &lt;username&gt; &lt;groupname&gt; &lt;folder name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="让文件夹只允许自己访问"><a href="#让文件夹只允许自己访问" class="headerlink" title="让文件夹只允许自己访问"></a>让文件夹只允许自己访问</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 700 &lt;foldername&gt;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io">Zhaohua Tian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io/2019/12/16/C_%E6%95%99%E7%A8%8B_Ubuntu_%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">https://knifelees3.github.io/2019/12/16/C_%E6%95%99%E7%A8%8B_Ubuntu_%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ubuntu/">Ubuntu</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png服务器" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/12/21/C_%E6%95%99%E7%A8%8B_inkscape%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6textext%E5%87%BA%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="inkscape安装插件textext出错的解决办法"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/InkscapeICON.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">inkscape安装插件textext出错的解决办法</div></div></a></div><div class="next-post pull-right"><a href="/2019/12/01/C_%E6%95%99%E7%A8%8B_MATLAB_%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/" title="Windows系统MATLAB远程桌面使用时报错的问题"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Windows系统MATLAB远程桌面使用时报错的问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2019/10/17/A_En_How_To_Delete_Ubuntu_In_Windows/" title="How to uninstall ubuntu with windows&#x2F;ubuntu dual system"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-10-17</div><div class="title">How to uninstall ubuntu with windows&#x2F;ubuntu dual system</div></div></a></div><div><a href="/2020/05/30/C_%E6%95%99%E7%A8%8B_Ubuntu_%E5%AE%89%E8%A3%85COMSOL_MATLAB_FDTD%20Solutions/" title="Ubuntu安装COMSOL,MATLAB以及FDTD Solutions"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-30</div><div class="title">Ubuntu安装COMSOL,MATLAB以及FDTD Solutions</div></div></a></div><div><a href="/2019/03/02/C_%E6%95%99%E7%A8%8B_Ubuntu_%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/" title="Linux设置定时运行脚本以及软件开机自动启动"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-02</div><div class="title">Linux设置定时运行脚本以及软件开机自动启动</div></div></a></div><div><a href="/2019/06/26/C_%E6%95%99%E7%A8%8B_Ubuntu_%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" title="Linux设置远程桌面连接"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-26</div><div class="title">Linux设置远程桌面连接</div></div></a></div><div><a href="/2020/10/31/C_%E6%95%99%E7%A8%8B_Ubuntu%E5%AE%89%E8%A3%85LumericalFDTDSolutions/" title="Ubuntu安装Lumerical FDTD Solutions"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/FDTDICON.ico" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-31</div><div class="title">Ubuntu安装Lumerical FDTD Solutions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/upload/ket.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zhaohua Tian</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.zhihu.com/people/knife-lee-94"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">ZhaohuaTian's personal blog/个人小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">切换文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">显示文件夹信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">复制、删除、重命名文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.4.</span> <span class="toc-text">查看文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6%E7%9A%84%E4%B9%A6%E5%86%99%E3%80%81%E8%BF%90%E8%A1%8C"><span class="toc-number">1.1.5.</span> <span class="toc-text">脚本文件的书写、运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%91%98%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">服务器管理员重要命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E9%87%8D%E5%90%AF%E6%88%96%E8%80%85%E5%85%B3%E6%9C%BA"><span class="toc-number">1.2.1.</span> <span class="toc-text">远程重启或者关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%88%96%E8%80%85%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">1.2.2.</span> <span class="toc-text">添加或者删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%A1%AC%E7%9B%98%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.2.3.</span> <span class="toc-text">查看服务器的硬盘大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%A0%B8%E5%BF%83%E6%95%B0%E7%AD%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">查看服务器的核心数等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C"><span class="toc-number">1.2.5.</span> <span class="toc-text">重启服务器网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E6%9F%90%E4%B8%80%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90"><span class="toc-number">1.2.6.</span> <span class="toc-text">给某一用户管理员权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">1.2.7.</span> <span class="toc-text">修改用户的密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.8.</span> <span class="toc-text">添加到环境变量的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#A-%E7%94%A8%E4%BA%8E%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">1.2.8.1.</span> <span class="toc-text">A.用于当前用户：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B-%E7%94%A8%E4%BA%8E%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">1.2.8.2.</span> <span class="toc-text">B.用于所有用户：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.9.</span> <span class="toc-text">安装多个版本软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%88%96%E8%80%85%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6-%EF%BC%88ubuntu%EF%BC%89"><span class="toc-number">1.2.10.</span> <span class="toc-text">安装或者卸载软件 （ubuntu）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BDISO%E6%96%87%E4%BB%B6%E5%88%B0%E7%A3%81%E7%9B%98"><span class="toc-number">1.2.11.</span> <span class="toc-text">挂载ISO文件到磁盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%8D%E5%90%8C%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-number">1.2.12.</span> <span class="toc-text">查看不同用户执行脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E5%BE%85%E6%9F%90%E4%B8%80%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%AE%8C%E6%AF%95%E4%B9%8B%E5%90%8E%E6%8E%A5%E7%9D%80%E8%BF%90%E8%A1%8C"><span class="toc-number">1.2.13.</span> <span class="toc-text">等待某一程序运行完毕之后接着运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E6%9F%90%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%8B%A5%E6%9C%89%E8%80%85"><span class="toc-number">1.2.14.</span> <span class="toc-text">更改某文件夹的拥有者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A9%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%AA%E5%85%81%E8%AE%B8%E8%87%AA%E5%B7%B1%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.15.</span> <span class="toc-text">让文件夹只允许自己访问</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/15/E_%E7%89%A9%E7%90%86_20YearsNanoOptics/" title="Sympoisum 20 Years Nano Optics Pioneer Interview Collections"><img src="https://mpl.mpg.de/fileadmin/_processed_/0/5/csm_MPL_Vahid_Sandoghdar_SCT_1343_4da3fea24f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Sympoisum 20 Years Nano Optics Pioneer Interview Collections"/></a><div class="content"><a class="title" href="/2025/02/15/E_%E7%89%A9%E7%90%86_20YearsNanoOptics/" title="Sympoisum 20 Years Nano Optics Pioneer Interview Collections">Sympoisum 20 Years Nano Optics Pioneer Interview Collections</a><time datetime="2025-02-15T15:32:30.000Z" title="Created 2025-02-15 23:32:30">2025-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/17/E_%E7%89%A9%E7%90%86_%E6%97%8B%E8%BD%ACFrame%E4%B8%8B%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E7%9A%84%E8%A1%A8%E7%A4%BA/" title="旋转Frame下哈密顿量的表示"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="旋转Frame下哈密顿量的表示"/></a><div class="content"><a class="title" href="/2025/01/17/E_%E7%89%A9%E7%90%86_%E6%97%8B%E8%BD%ACFrame%E4%B8%8B%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E7%9A%84%E8%A1%A8%E7%A4%BA/" title="旋转Frame下哈密顿量的表示">旋转Frame下哈密顿量的表示</a><time datetime="2025-01-17T12:29:30.000Z" title="Created 2025-01-17 20:29:30">2025-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/E_%E7%89%A9%E7%90%86_%E5%B8%B8%E8%A7%81%E5%8D%95%E5%85%89%E5%AD%90%E6%BA%90%E7%A7%8D%E7%B1%BB/" title="典型单光子源以及光子波形"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picblog/Snipaste_2025-02-12_00-04-09.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="典型单光子源以及光子波形"/></a><div class="content"><a class="title" href="/2024/10/28/E_%E7%89%A9%E7%90%86_%E5%B8%B8%E8%A7%81%E5%8D%95%E5%85%89%E5%AD%90%E6%BA%90%E7%A7%8D%E7%B1%BB/" title="典型单光子源以及光子波形">典型单光子源以及光子波形</a><time datetime="2024-10-28T14:28:30.000Z" title="Created 2024-10-28 22:28:30">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E7%A7%91%E7%A0%94%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF/" title="如何减少科研中的错误"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何减少科研中的错误"/></a><div class="content"><a class="title" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E7%A7%91%E7%A0%94%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF/" title="如何减少科研中的错误">如何减少科研中的错误</a><time datetime="2024-09-05T01:26:30.000Z" title="Created 2024-09-05 09:26:30">2024-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E6%A3%80%E6%9F%A5%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E5%91%8A/" title="如何减少科研中的错误"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何减少科研中的错误"/></a><div class="content"><a class="title" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E6%A3%80%E6%9F%A5%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E5%91%8A/" title="如何减少科研中的错误">如何减少科研中的错误</a><time datetime="2024-09-05T01:26:30.000Z" title="Created 2024-09-05 09:26:30">2024-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Zhaohua Tian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'jR8sBuhmF2OQvpAqh8LWCbt1-gzGzoHsz',
+      appKey: '2C5ChxH3zGFNoQ8rO7u9I2Lb',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

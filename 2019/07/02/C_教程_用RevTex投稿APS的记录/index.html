@@ -1,0 +1,391 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>APS用RevTex投稿全记录 | Zhaohua Tian's Web</title><meta name="author" content="Zhaohua Tian"><meta name="copyright" content="Zhaohua Tian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="APS本笔记详细技术了如何用latex写一篇论文并投稿。在准备论文的时候，需要用到的软件有  Texlive ，用来编译Latex。 RevTex，APS官方写作包，对于Texlive，一般都会默认安装有Texlive，只是不是最新版的。 Latex编辑器，我比较推荐Texstudio,或者Sublime或者Vs code等。 文献管理软件，我比较推荐Endnote以及Mendeley,文献管理软">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APS用RevTex投稿全记录">
+<meta property="og:url" content="https://knifelees3.github.io/2019/07/02/C_%E6%95%99%E7%A8%8B_%E7%94%A8RevTex%E6%8A%95%E7%A8%BFAPS%E7%9A%84%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Zhaohua Tian&#39;s Web">
+<meta property="og:description" content="APS本笔记详细技术了如何用latex写一篇论文并投稿。在准备论文的时候，需要用到的软件有  Texlive ，用来编译Latex。 RevTex，APS官方写作包，对于Texlive，一般都会默认安装有Texlive，只是不是最新版的。 Latex编辑器，我比较推荐Texstudio,或者Sublime或者Vs code等。 文献管理软件，我比较推荐Endnote以及Mendeley,文献管理软">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/EndNoteICON.jpg">
+<meta property="article:published_time" content="2019-07-02T07:39:32.000Z">
+<meta property="article:modified_time" content="2024-08-17T03:30:30.752Z">
+<meta property="article:author" content="Zhaohua Tian">
+<meta property="article:tag" content="学术">
+<meta property="article:tag" content="Latex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/EndNoteICON.jpg"><link rel="shortcut icon" href="/upload/ket.png"><link rel="canonical" href="https://knifelees3.github.io/2019/07/02/C_%E6%95%99%E7%A8%8B_%E7%94%A8RevTex%E6%8A%95%E7%A8%BFAPS%E7%9A%84%E8%AE%B0%E5%BD%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?7c4710045c846acddf6f6813e3d1fa3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'APS用RevTex投稿全记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-17 11:30:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/upload/ket.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/EndNoteICON.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zhaohua Tian's Web"><span class="site-name">Zhaohua Tian's Web</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">APS用RevTex投稿全记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2019-07-02T07:39:32.000Z" title="Created 2019-07-02 15:39:32">2019-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-08-17T03:30:30.752Z" title="Updated 2024-08-17 11:30:30">2024-08-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>6min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="APS用RevTex投稿全记录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="APS"><a href="#APS" class="headerlink" title="APS"></a>APS</h1><p>本笔记详细技术了如何用latex写一篇论文并投稿。在准备论文的时候，需要用到的软件有</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.tug.org/texlive/">Texlive</a> ，用来编译Latex。</li>
+<li><a target="_blank" rel="noopener" href="https://journals.aps.org/revtex">RevTex</a>，APS官方写作包，对于Texlive，一般都会默认安装有Texlive，只是不是最新版的。</li>
+<li>Latex编辑器，我比较推荐Texstudio,或者Sublime或者Vs code等。</li>
+<li>文献管理软件，我比较推荐Endnote以及Mendeley,文献管理软件很多，找一个适合自己的，我自己用的是Endnote。</li>
+</ul>
+<p>当然，实际准备论文时候，还需要准备论文绘图，绘制数据图的时候，我使用了MATLAB和python一起来绘制的，二者都不能完全相互替代。绘制示意图时，用到了Corel draw绘制二维矢量图，Blender绘制三维图。</p>
+<h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><p>在准备阶段，需要安装一系列软件。每个人用的软件可能会有区别，比如写latex我喜欢用sublime来书写，其在插入文献的时候有其他软件无法比拟的功能。我在此以我用的软件为例，写一下准备一篇文章需要经过哪些步骤。</p>
+<ul>
+<li><p>安装texlive2018： 用来编译latex文件</p>
+</li>
+<li><p>安装编辑器， 用来书写文章。</p>
+<ul>
+<li>推荐TexStudio,不需要过多配置。</li>
+<li>或者安装sublime并且配置好相关的插件：</li>
+<li>或者按照Vscode并且配置好相关插件。</li>
+</ul>
+</li>
+<li><p>文献管理：</p>
+<ul>
+<li>安装Endnote： 用来管理文献、插入文献、导出文献</li>
+<li>如果使用Texstudio，则需要Jabref软件来配合插入文献</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2 id="更新Revtex"><a href="#更新Revtex" class="headerlink" title="更新Revtex"></a>更新Revtex</h2><p>Texlive2016 默认安装了revtex4.1，你也可以更新到最新版，从这里下载<a target="_blank" rel="noopener" href="https://journals.aps.org/revtex">RevTex</a></p>
+<blockquote>
+<p>The REVTeX 4.2 may be downloaded directly from here as revtex4-2-tds.zip. REVTeX 4.2 is also available on CTAN.<br>To install REVTeX 4.2, unzip the revtex4-2-tds.zip file. This zip file contains all of the files in the REVTeX 4.2 distribution in the standard “TeX Directory Structure” (TDS) layout. The files can be copied directly in the local tree of your TeX distribution (for TeX Live, this would be in the texmf-local directory).</p>
+</blockquote>
+<p>下载下来的文件有一些是包文件，还有一些doc文件，是一些使用示例。你可以将文件现在下来之后，安装<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yfjack/p/4639185.html">如下方式</a>安装</p>
+<blockquote>
+<p>直接拷贝从网上下载的模板里带的后缀名为.cls,.sty的文件到texlive的安装目录下：<br>D:\texlive\2014\texmf-dist\tex\latex<br>然后，再在命令行输入：texhash 命令即可完成安装,如下图所示。</p>
+</blockquote>
+<p><code>texhash</code>是更新数据库的命令，也可以用Latex Manager来更新，点操作之后有一个更新选项。</p>
+<p>更新数据库<a target="_blank" rel="noopener" href="https://www.dickimaw-books.com/latex/novices/html/texhash.html">Refreshing the TeX Database</a></p>
+<h2 id="用Endenote建立文献库并且导出"><a href="#用Endenote建立文献库并且导出" class="headerlink" title="用Endenote建立文献库并且导出"></a>用Endenote建立文献库并且导出</h2><p>我们需要用Endnote来将自己阅读的文献进行整理、分类、命名，这样自己平时阅读的时候 比较方便，需要用到的时候，也可以快速的提取到。具体Endnote使用，可以参见我的另外一个博客：</p>
+<p>最终确定要插入哪些文献以后，需要将要插入的文献，导出为bibtex格式，具体做法为，选择“output style”为”export bibtex”,然后带格式的复制对应的参考文献，新建一个名为“reference.bib”的文件，粘贴复制的内容到该文件即可，其文件的内容一般如下：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@article{RN24,</span><br><span class="line">   author = {Bradford, Matthew and Shen, Jung-Tsung},</span><br><span class="line">   title = {Single-photon frequency conversion by exploiting quantum interference},</span><br><span class="line">   journal = {Physical Review A},</span><br><span class="line">   volume = {85},</span><br><span class="line">   number = {4},</span><br><span class="line">   ISSN = {1050-2947</span><br><span class="line">1094-1622},</span><br><span class="line">   DOI = {10.1103/PhysRevA.85.043814},</span><br><span class="line">   year = {2012},</span><br><span class="line">   type = {Journal Article}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">@article{RN25,</span><br><span class="line">   author = {Bradford, Matthew and Shen, Jung-Tsung},</span><br><span class="line">   title = {Spontaneous emission in cavity QED with a terminated waveguide},</span><br><span class="line">   journal = {Physical Review A},</span><br><span class="line">   volume = {87},</span><br><span class="line">   number = {6},</span><br><span class="line">   ISSN = {1050-2947</span><br><span class="line">1094-1622},</span><br><span class="line">   DOI = {10.1103/PhysRevA.87.063830},</span><br><span class="line">   year = {2013},</span><br><span class="line">   type = {Journal Article}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>内容包含了作者、杂志、期刊号等，是一些基本的格式。</p>
+<h2 id="文章示例"><a href="#文章示例" class="headerlink" title="文章示例"></a>文章示例</h2><p>投稿时，需要用到APS的官方revtex的包，我们安装的texlive默认就安装了该包，不用再额外的安装了。我们一般的文章的一个例子如下：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%\documentclass[aps,prl,reprint,superscriptaddress,showpacs]{revtex4-1}</span></span><br><span class="line"><span class="keyword">\documentclass</span>[<span class="comment">%</span></span><br><span class="line">reprint, <span class="comment">%preprint, twocolumn% 其中reprint提供双栏最接近出版论文的格式，preprint显示的字体和行距则相对大一些，是方便审稿人将论文打印出来仔细阅读的，twocolumn选项与此类似。</span></span><br><span class="line">superscriptaddress, <span class="comment">%groupedaddress,% 现在通用是前一种作者名录格式，这样在显示多个作者或者一个作者从属于多个机构时比较紧凑方便。</span></span><br><span class="line">showpacs,<span class="comment">% 显示PACS代码</span></span><br><span class="line">amsmath, amssymb, <span class="comment">%都是用于显示数学公式环境</span></span><br><span class="line">aps, <span class="comment">%这个是指APS风格，另一个可选项应该是AIP</span></span><br><span class="line">prl,<span class="comment">%pra, prb, rmp, % 这里是对不同期刊的选择</span></span><br><span class="line">]{revtex4-1}<span class="comment">% 这个格式就是APS对应的latex文档格式</span></span><br><span class="line"><span class="keyword">\usepackage</span>{graphicx}<span class="comment">% Include figure files</span></span><br><span class="line"><span class="keyword">\usepackage</span>{dcolumn}<span class="comment">% Align table columns on decimal point</span></span><br><span class="line"><span class="keyword">\usepackage</span>{bm}<span class="comment">% bold math</span></span><br><span class="line"><span class="keyword">\usepackage</span>{natbib}<span class="comment">%to cite</span></span><br><span class="line"><span class="keyword">\usepackage</span>{hyperref}<span class="comment">% add hypertext capabilities</span></span><br><span class="line"><span class="keyword">\usepackage</span>{float}</span><br><span class="line"><span class="comment">%\usepackage{stix}</span></span><br><span class="line"><span class="keyword">\usepackage</span>{mathrsfs}<span class="comment">%花体的插入方法</span></span><br><span class="line"><span class="keyword">\hypersetup</span>{colorlinks=true, citecolor=blue, urlcolor=blue, linkcolor=blue}</span><br><span class="line"><span class="keyword">\bibliographystyle</span>{apsrev4-1.bst}<span class="comment">% 注意这个.bst风格文件是需要从官网单独下载的，可以控制文章末尾参考文献的现实风格。下载之后放到工作目录下即可(即.tex文档所在的目录)</span></span><br><span class="line"><span class="keyword">\begin</span>{document}</span><br><span class="line"><span class="keyword">\title</span>{Quantum Photonic Node for On-Chip State Transfer}<span class="comment">% Force line breaks with \\</span></span><br><span class="line"><span class="comment">%\thanks{A footnote to the article title}%</span></span><br><span class="line"><span class="keyword">\author</span>{Youself}<span class="comment">% You, the writer of this paper. 第一作者</span></span><br><span class="line"><span class="comment">%\noaltaffiliation</span></span><br><span class="line"><span class="comment">%\altaffiliation{School of Physics, Huazhong University of Science and Technology, Luoyu Road 1037, Wuhan, 430074, People’s Republic of China}</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\author</span>{Xiao Ming}<span class="comment">% Boss with communication email 通讯作者，注意这里的Email一定要放在通讯作者后的第一个位置，这样邮箱地址的链接才会正确显示。</span></span><br><span class="line"><span class="keyword">\email</span>{12345678@gmail.com}</span><br><span class="line"><span class="comment">%\affiliation{School of Physics, Huazhong University of Science and Technology, Luoyu Road 1037, Wuhan, 430074, People’s Republic of China}</span></span><br><span class="line"><span class="keyword">\author</span>{Leehoom Wang} <span class="comment">% Boss with communication email 通讯作者，注意这里的Email一定要放在通讯作者后的第一个位置，这样邮箱地址的链接才会正确显示。</span></span><br><span class="line"><span class="keyword">\email</span>{Leehoom<span class="built_in">_</span>wang@gmail.com}	</span><br><span class="line"><span class="comment">%\homepage{http://www.Second.institution.edu/~Charlie.Author}</span></span><br><span class="line"><span class="keyword">\affiliation</span>{School of Physics, Huazhong University of Science and Technology, Luoyu Road 1037, Wuhan, 430074, People’s Republic of China}<span class="comment">%</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\date</span>{<span class="keyword">\today</span>}<span class="comment">%This date can be changed.</span></span><br><span class="line"><span class="keyword">\begin</span>{abstract}<span class="comment">% 摘要</span></span><br><span class="line">This is abstract This is abstract This is abstract This is abstract This is abstractThis is abstract This is abstract  </span><br><span class="line"><span class="keyword">\end</span>{abstract}</span><br><span class="line"><span class="keyword">\pacs</span>{42.50.Ct, 42.50.Ex, 42.50.Pq, 42.79.Gn}<span class="comment">% PACS, the Physics and Astronomy</span></span><br><span class="line"><span class="comment">%\keywords{Suggested keywords}% Not always required.</span></span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>{acknowledgments}</span><br><span class="line">This is acknowledgments This is acknowledgments This is acknowledgments This is acknowledgments This is acknowledgments This is acknowledgments This is acknowledgments </span><br><span class="line"><span class="keyword">\end</span>{acknowledgments}</span><br><span class="line"></span><br><span class="line"><span class="keyword">\bibliographystyle</span>{apsrev4-1}</span><br><span class="line"><span class="keyword">\bibliography</span>{reference.bib} <span class="comment">% The reference file name</span></span><br><span class="line"><span class="keyword">\end</span>{document}</span><br></pre></td></tr></table></figure>
+<h2 id="如何插入文献"><a href="#如何插入文献" class="headerlink" title="如何插入文献"></a>如何插入文献</h2><p>写文章非常重要的一个部分就是插入文献。在word中插入文献，只需要安装好endnote之后，即可一</p>
+<h2 id="一些Bug记录"><a href="#一些Bug记录" class="headerlink" title="一些Bug记录"></a>一些Bug记录</h2><p>用Revtex包的时候，如果用了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\usepackage{pdfsync}</span><br></pre></td></tr></table></figure><br>就会导致参考文献老是有一个空行。</p>
+<p>另外还会导致用revtex4-1编译的时候摘要单独搞一页。</p>
+<p>2024 08 17</p>
+<p>投稿JOSAB的时候，补充材料上传了一直打不开，其实是编译有问题，但是本地一般不会显示。</p>
+<p>此时需要将投稿文件，上传到Overleaf，然后检查哪里编译有问题。常见问题包括：</p>
+<ul>
+<li>reference的bib文件，重复的有几个相同的文献以及citation key，会报错。</li>
+<li>注意参考文献的 标题，不能有特殊字符</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io">Zhaohua Tian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io/2019/07/02/C_%E6%95%99%E7%A8%8B_%E7%94%A8RevTex%E6%8A%95%E7%A8%BFAPS%E7%9A%84%E8%AE%B0%E5%BD%95/">https://knifelees3.github.io/2019/07/02/C_%E6%95%99%E7%A8%8B_%E7%94%A8RevTex%E6%8A%95%E7%A8%BFAPS%E7%9A%84%E8%AE%B0%E5%BD%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E6%9C%AF/">学术</a><a class="post-meta__tags" href="/tags/Latex/">Latex</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/EndNoteICON.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/07/06/A_En_How_To_Use_COMSOL_LiveLink_With_MATLAB/" title="How to use COMSOL, MATLAB and COMSOL livelink with MATLAB on Server"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/COMSOLICON.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">How to use COMSOL, MATLAB and COMSOL livelink with MATLAB on Server</div></div></a></div><div class="next-post pull-right"><a href="/2019/06/26/C_%E6%95%99%E7%A8%8B_Ubuntu_%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" title="Linux设置远程桌面连接"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux设置远程桌面连接</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2019/11/18/A_En_Python_UsefulWeb/" title="Useful python web and sources"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/PythonICON.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-11-18</div><div class="title">Useful python web and sources</div></div></a></div><div><a href="/2019/02/16/C_%E6%95%99%E7%A8%8B_Latex%E6%8A%80%E5%B7%A7-%E5%B8%B8%E8%A7%81%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/" title="Latex技巧-常见特殊字符"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/EndNoteICON.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-02-16</div><div class="title">Latex技巧-常见特殊字符</div></div></a></div><div><a href="/2019/12/28/C_%E6%95%99%E7%A8%8B_Sublime_%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%A9%B6%E6%9E%81%E6%80%BB%E7%BB%93/" title="Sublime的安装及使用究极总结"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/PackageControlUsage.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-12-28</div><div class="title">Sublime的安装及使用究极总结</div></div></a></div><div><a href="/2021/02/04/C_%E6%95%99%E7%A8%8B_%E5%A6%82%E4%BD%95%E5%B7%A7%E7%94%A8Python%E7%94%9F%E6%88%90tex%E6%96%87%E4%BB%B6%E6%9D%A5%E6%95%B4%E7%90%86%E5%AD%A6%E6%9C%AF%E6%8A%A5%E5%91%8A%E7%9A%84%E6%88%AA%E5%9B%BE%E5%92%8C%E7%85%A7%E7%89%87/" title="Python办公:自动化生成latex代码来整理大量的图片到PDF"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/image-20210204102826026.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-04</div><div class="title">Python办公:自动化生成latex代码来整理大量的图片到PDF</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/upload/ket.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zhaohua Tian</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.zhihu.com/people/knife-lee-94"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">ZhaohuaTian's personal blog/个人小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#APS"><span class="toc-number">1.</span> <span class="toc-text">APS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="toc-number">1.1.</span> <span class="toc-text">准备阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0Revtex"><span class="toc-number">1.2.</span> <span class="toc-text">更新Revtex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8Endenote%E5%BB%BA%E7%AB%8B%E6%96%87%E7%8C%AE%E5%BA%93%E5%B9%B6%E4%B8%94%E5%AF%BC%E5%87%BA"><span class="toc-number">1.3.</span> <span class="toc-text">用Endenote建立文献库并且导出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text">文章示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8F%92%E5%85%A5%E6%96%87%E7%8C%AE"><span class="toc-number">1.5.</span> <span class="toc-text">如何插入文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9BBug%E8%AE%B0%E5%BD%95"><span class="toc-number">1.6.</span> <span class="toc-text">一些Bug记录</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/15/E_%E7%89%A9%E7%90%86_20YearsNanoOptics/" title="Sympoisum 20 Years Nano Optics Pioneer Interview Collections"><img src="https://mpl.mpg.de/fileadmin/_processed_/0/5/csm_MPL_Vahid_Sandoghdar_SCT_1343_4da3fea24f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Sympoisum 20 Years Nano Optics Pioneer Interview Collections"/></a><div class="content"><a class="title" href="/2025/02/15/E_%E7%89%A9%E7%90%86_20YearsNanoOptics/" title="Sympoisum 20 Years Nano Optics Pioneer Interview Collections">Sympoisum 20 Years Nano Optics Pioneer Interview Collections</a><time datetime="2025-02-15T15:32:30.000Z" title="Created 2025-02-15 23:32:30">2025-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/17/E_%E7%89%A9%E7%90%86_%E6%97%8B%E8%BD%ACFrame%E4%B8%8B%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E7%9A%84%E8%A1%A8%E7%A4%BA/" title="旋转Frame下哈密顿量的表示"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="旋转Frame下哈密顿量的表示"/></a><div class="content"><a class="title" href="/2025/01/17/E_%E7%89%A9%E7%90%86_%E6%97%8B%E8%BD%ACFrame%E4%B8%8B%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E7%9A%84%E8%A1%A8%E7%A4%BA/" title="旋转Frame下哈密顿量的表示">旋转Frame下哈密顿量的表示</a><time datetime="2025-01-17T12:29:30.000Z" title="Created 2025-01-17 20:29:30">2025-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/E_%E7%89%A9%E7%90%86_%E5%B8%B8%E8%A7%81%E5%8D%95%E5%85%89%E5%AD%90%E6%BA%90%E7%A7%8D%E7%B1%BB/" title="典型单光子源以及光子波形"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picblog/Snipaste_2025-02-12_00-04-09.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="典型单光子源以及光子波形"/></a><div class="content"><a class="title" href="/2024/10/28/E_%E7%89%A9%E7%90%86_%E5%B8%B8%E8%A7%81%E5%8D%95%E5%85%89%E5%AD%90%E6%BA%90%E7%A7%8D%E7%B1%BB/" title="典型单光子源以及光子波形">典型单光子源以及光子波形</a><time datetime="2024-10-28T14:28:30.000Z" title="Created 2024-10-28 22:28:30">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E7%A7%91%E7%A0%94%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF/" title="如何减少科研中的错误"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何减少科研中的错误"/></a><div class="content"><a class="title" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E7%A7%91%E7%A0%94%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF/" title="如何减少科研中的错误">如何减少科研中的错误</a><time datetime="2024-09-05T01:26:30.000Z" title="Created 2024-09-05 09:26:30">2024-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E6%A3%80%E6%9F%A5%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E5%91%8A/" title="如何减少科研中的错误"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何减少科研中的错误"/></a><div class="content"><a class="title" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E6%A3%80%E6%9F%A5%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E5%91%8A/" title="如何减少科研中的错误">如何减少科研中的错误</a><time datetime="2024-09-05T01:26:30.000Z" title="Created 2024-09-05 09:26:30">2024-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Zhaohua Tian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'jR8sBuhmF2OQvpAqh8LWCbt1-gzGzoHsz',
+      appKey: '2C5ChxH3zGFNoQ8rO7u9I2Lb',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MATLAB parfor 进度的提取 | Zhaohua Tian's Web</title><meta name="author" content="Zhaohua Tian"><meta name="copyright" content="Zhaohua Tian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MATLAB #ParallelComputingMATLAB parfor 进度显示用MATLAB的时候，经常会用到并行计算，用于加快速度。我们有时候还需要知道程序具体运行到哪一步，比如循环一个有100个，已经运行了多少个。如果不是parfor,我们可以采用每进行一次运算，就输出一些信息到文件的方法，比如 123456N&#x3D;10;fid&#x3D;fopen(&#39;progress.txt&#39;,&#39;at&#39;);for">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB parfor 进度的提取">
+<meta property="og:url" content="https://knifelees3.github.io/2019/03/03/C_%E6%95%99%E7%A8%8B_MATLAB_ParforProgress/index.html">
+<meta property="og:site_name" content="Zhaohua Tian&#39;s Web">
+<meta property="og:description" content="MATLAB #ParallelComputingMATLAB parfor 进度显示用MATLAB的时候，经常会用到并行计算，用于加快速度。我们有时候还需要知道程序具体运行到哪一步，比如循环一个有100个，已经运行了多少个。如果不是parfor,我们可以采用每进行一次运算，就输出一些信息到文件的方法，比如 123456N&#x3D;10;fid&#x3D;fopen(&#39;progress.txt&#39;,&#39;at&#39;);for">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png">
+<meta property="article:published_time" content="2019-03-02T17:31:38.000Z">
+<meta property="article:modified_time" content="2023-04-20T12:37:26.000Z">
+<meta property="article:author" content="Zhaohua Tian">
+<meta property="article:tag" content="MATLAB">
+<meta property="article:tag" content="并行计算">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png"><link rel="shortcut icon" href="/upload/ket.png"><link rel="canonical" href="https://knifelees3.github.io/2019/03/03/C_%E6%95%99%E7%A8%8B_MATLAB_ParforProgress/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?7c4710045c846acddf6f6813e3d1fa3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MATLAB parfor 进度的提取',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-20 20:37:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/upload/ket.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Zhaohua Tian's Web"><span class="site-name">Zhaohua Tian's Web</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/academatic/"><span> Academic</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MATLAB parfor 进度的提取</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2019-03-02T17:31:38.000Z" title="Created 2019-03-03 01:31:38">2019-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-20T12:37:26.000Z" title="Updated 2023-04-20 20:37:26">2023-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/EnglishNotes/">EnglishNotes</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>9min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MATLAB parfor 进度的提取"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="MATLAB-ParallelComputing"><a href="#MATLAB-ParallelComputing" class="headerlink" title="MATLAB #ParallelComputing"></a>MATLAB #ParallelComputing</h1><h1 id="MATLAB-parfor-进度显示"><a href="#MATLAB-parfor-进度显示" class="headerlink" title="MATLAB parfor 进度显示"></a>MATLAB parfor 进度显示</h1><p>用MATLAB的时候，经常会用到并行计算，用于加快速度。我们有时候还需要知道程序具体运行到哪一步，比如循环一个有100个，已经运行了多少个。如果不是parfor,我们可以采用每进行一次运算，就输出一些信息到文件的方法，比如</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">10</span>;</span><br><span class="line">fid=fopen(<span class="string">'progress.txt'</span>,<span class="string">'at'</span>);</span><br><span class="line"><span class="keyword">for</span> l=<span class="number">1</span>:</span><br><span class="line">fprintf(fid,[datestr(now),<span class="string">' the loop step is %d \n'</span>],l);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">fclose(fid);</span><br></pre></td></tr></table></figure>
+<p>这样的话，就会在程序里面输出每一个循环已经执行的信息。可以看见输出的txt文件夹具有如下的内容：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">1</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">2</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">3</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">4</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">5</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">6</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">7</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">8</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">9</span>  </span><br><span class="line"><span class="number">02</span>-Mar<span class="number">-2019</span> <span class="number">23</span>:<span class="number">50</span>:<span class="number">17</span> the loop step is <span class="number">10</span>  </span><br></pre></td></tr></table></figure>
+<p>上面的</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datestr(now)</span><br></pre></td></tr></table></figure>
+<p>可以得到当前的时间。这是对于普通循环的用法，如果是parfor呢？因为并行计算会调用多个cpu进行计算，此时如果接着用上面的命令，就会出现多个内核同时对同一个文件处理，在服务器上面计算就会因为文件权限问题报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">错误使用 parfor_matlab (line 3)</span><br><span class="line">文件标识符无效。使用 fopen 生成有效的文件标识符。</span><br></pre></td></tr></table></figure>
+<p>为了避免这种错误，我们可以将上面的对文件的操作放在parfor里面，即</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">parfor</span> l=<span class="number">1</span>:</span><br><span class="line">fid=fopen(<span class="string">'progress.txt'</span>,<span class="string">'at'</span>);</span><br><span class="line">fprintf(fid,[datestr(now),<span class="string">' the loop step is %d \n'</span>],l);</span><br><span class="line">fclose(fid);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>这样每次运行出一个结果，就可以输出一个结果到文件，且不会相互冲突。还需要注意的是，我们这里输出的结果不是按顺序的，而是不同cpu计算的结果随机填充到文件里面,我们必须手动数一数输出了几行结果到文件里面了，如下。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">02</span>:<span class="number">45</span> the loop step is <span class="number">10</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">4</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">7</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">1</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">3</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">6</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">5</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">2</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">8</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">10</span>  </span><br><span class="line"><span class="number">03</span>-Mar<span class="number">-2019</span> <span class="number">00</span>:<span class="number">03</span>:<span class="number">03</span> the loop step is <span class="number">9</span>  </span><br></pre></td></tr></table></figure>
+<p>可以看见，上面的结果是随机的，为了具体知道到底计算了几个循环了，有两个办法，一是用文本编辑器打开txt文件，一般都会在左边显示行数，数有几行，就可以知道计算了几个了。第二个方法是我们可以再次读取一下我们的txt文件，数一数其矩阵的大小，就可以知道具体计算了多少行了。代码如下</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%每次运行确保文件‘progress_1.txt'，‘progress_2.txt'都是空的</span></span><br><span class="line">  N=<span class="number">10</span>;</span><br><span class="line">   <span class="keyword">for</span> l=<span class="number">1</span>:N</span><br><span class="line">   <span class="comment">%首先输出一个运行循环的结果到'progress_1.txt'文件</span></span><br><span class="line">    fid=fopen(<span class="string">'progress_1.txt'</span>,<span class="string">'a'</span>);</span><br><span class="line">    fprintf(fid,[datestr(now),<span class="string">' the loop step is %d \n'</span>],l);</span><br><span class="line">    fclose(fid);</span><br><span class="line">   <span class="comment">%然后从'progress_1.txt'文件读取文件的字符长度</span></span><br><span class="line">    fid=fopen(<span class="string">'progress_1.txt'</span>,<span class="string">'r'</span>);</span><br><span class="line">    [A, count]=fscanf(fid,<span class="string">'%s'</span>);<span class="comment">%count是读取字符的个数，我们每一行都有7个字符，所以count是7的倍数</span></span><br><span class="line">    fclose(fid);</span><br><span class="line">    fid=fopen(<span class="string">'progress_2.txt'</span>,<span class="string">'a'</span>);</span><br><span class="line">    <span class="comment">%最后在另外一个文件输出我们的总共计算了多少步</span></span><br><span class="line">    fprintf(fid,[datestr(now),<span class="string">' has looped for  %d  steps \n'</span>],count/<span class="number">7</span>);</span><br><span class="line">    fclose(fid);</span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>这样就可以在文件里面实时查看我们的计算进度了。这样的坏处是由于我们频繁读取文件，运行速度会变慢，对于每一个parfor循环都需要很久的情况，这种方法是值得一试的。前面讲的都是在非图形界面的情况，如果我们有图形界面，其实还有更加好的解决方法，可以一边计算，一边显示百分比。在matlab的英文社区搜索“parfor progressbar”，就会有很多的结果，下面我展示一个我认为最好的解决方法，不需要额外的java之类的,我们需要将下面这段代码保存为“parfor_progressbar_v1.m”，和要计算的代码放在同一个文件夹，计算时候调用即可。下面也已经有了调用的例子。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">classdef</span> parfor_progressbar_v1 &lt; handle</span><br><span class="line"><span class="comment">% PARFOR_PROGRESSBAR  Progress bar suitable for multi-process computation.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   H = parfor_progressbar(N, 'message', 'property',value, ...)</span></span><br><span class="line"><span class="comment">%   creates a graphical progress bar with N iterations before completion.</span></span><br><span class="line"><span class="comment">%   A temporary file in tempdir is used to communicate among threads.</span></span><br><span class="line"><span class="comment">%   Any property/value pairs are passed to waitbar internally (optional).</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   H.iterate(X) updates the progress bar by X iterations.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   Example:</span></span><br><span class="line"><span class="comment">%   --------</span></span><br><span class="line"><span class="comment">%     N=50;    %total number of parfor iterations</span></span><br><span class="line"><span class="comment">%     hbar = parfor_progressbar(N,'Computing...');  %create the progress bar</span></span><br><span class="line"><span class="comment">%     parfor i=1:N,</span></span><br><span class="line"><span class="comment">%         pause(rand);       % computation</span></span><br><span class="line"><span class="comment">%         hbar.iterate(1);   % update progress by one iteration</span></span><br><span class="line"><span class="comment">%     end</span></span><br><span class="line"><span class="comment">%     close(hbar);   %close progress bar</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   Notes:</span></span><br><span class="line"><span class="comment">%   ------</span></span><br><span class="line"><span class="comment">%   Properties cannot be modified while inside a parfor loop. Use iterate only.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   With many short iterations, call iterate() periodically. Example:</span></span><br><span class="line"><span class="comment">%     if mod(i,10)==0,  hbar.iterate(10);  end</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   Inspired by the parfor_progress script made by Jeremy Scheff:</span></span><br><span class="line"><span class="comment">%   http://www.mathworks.com/matlabcentral/fileexchange/32101</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%   See also: WAITBAR, PARFOR.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%   Copyright 2015-2016 Cornell University All Rights Reserved.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% Public properties</span></span><br><span class="line"><span class="keyword">properties</span> (SetAccess=protected, GetAccess=public)</span><br><span class="line">    wbh;      <span class="comment">% Waitbar figure object handle</span></span><br><span class="line">    N;        <span class="comment">% Total number of iterations expected before completion</span></span><br><span class="line">    Msg;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">properties</span> (Dependent, GetAccess=public)</span><br><span class="line">    percent;  <span class="comment">% Percentage of completed iterations</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">properties</span> (Dependent, SetAccess=public, GetAccess=public)</span><br><span class="line">    message;  <span class="comment">% Message text displayed in waitbar</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Internal properties</span></span><br><span class="line"><span class="keyword">properties</span> (SetAccess=protected, GetAccess=protected, Hidden)</span><br><span class="line">    ipcfile;  <span class="comment">% Path to temporary file for inter-process communication</span></span><br><span class="line">    htimer;   <span class="comment">% Timer object that checks ipcfile for completed iterations</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">methods</span></span><br><span class="line">    <span class="comment">%========================  CONSTRUCTOR  ========================%</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">this</span> = <span class="title">parfor_progressbar_v1</span><span class="params">(N_init, varargin)</span></span></span><br><span class="line">    <span class="comment">% Create a new progress bar with N_init iterations before completion.</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">% Create a unique inter-process communication file.</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">10</span></span><br><span class="line">            f = sprintf(<span class="string">'%s%d.txt'</span>, mfilename, <span class="built_in">round</span>(<span class="built_in">rand</span>*<span class="number">1000</span>));</span><br><span class="line">            this.ipcfile = fullfile(tempdir, f);</span><br><span class="line">            <span class="keyword">if</span> ~exist(this.ipcfile,<span class="string">'file'</span>), <span class="keyword">break</span>; <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> exist(this.ipcfile,<span class="string">'file'</span>)</span><br><span class="line">            error(<span class="string">'Too many temporary files. Clear out tempdir.'</span>);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">        <span class="comment">% Create a new waitbar </span></span><br><span class="line">        this.N = N_init;</span><br><span class="line">        this.Msg = varargin{<span class="number">1</span>};</span><br><span class="line">        this.wbh = waitbar(<span class="number">0</span>, [this.Msg, <span class="string">'0% Complete'</span>]);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">% Create timer to periodically update the waitbar in the GUI thread.</span></span><br><span class="line">        this.htimer = timer( <span class="string">'ExecutionMode'</span>,<span class="string">'fixedSpacing'</span>, <span class="string">'Period'</span>,<span class="number">0.5</span>, ...</span><br><span class="line">                             <span class="string">'BusyMode'</span>,<span class="string">'drop'</span>, <span class="string">'Name'</span>,mfilename, ...</span><br><span class="line">                             <span class="string">'TimerFcn'</span>,@(x,y)this.tupdate );</span><br><span class="line">        start(this.htimer);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">%=========================  DESTRUCTOR  ========================%</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">delete</span><span class="params">(this)</span></span></span><br><span class="line">        this.close();</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">close</span><span class="params">(this)</span></span></span><br><span class="line">    <span class="comment">% Closer the progress bar and clean up internal state.</span></span><br><span class="line">    </span><br><span class="line">        <span class="comment">% Stop the timer</span></span><br><span class="line">        <span class="keyword">if</span> isa(this.htimer,<span class="string">'timer'</span>) &amp;&amp; isvalid(this.htimer)</span><br><span class="line">            stop(this.htimer);</span><br><span class="line">            pause(<span class="number">0.01</span>);</span><br><span class="line">            delete(this.htimer);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        this.htimer = [];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">% Delete the IPC file.</span></span><br><span class="line">        <span class="keyword">if</span> exist(this.ipcfile,<span class="string">'file'</span>)</span><br><span class="line">            delete(this.ipcfile);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">% Close the waitbar</span></span><br><span class="line">        <span class="keyword">if</span> ishandle(this.wbh)</span><br><span class="line">            close(this.wbh);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        this.wbh = [];</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">%======================  GET/SET METHODS  ======================%</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">percent</span> = <span class="title">get</span>.<span class="title">percent</span><span class="params">(this)</span></span></span><br><span class="line">    <span class="comment">% Calculate the fraction of completed iterations from IPC file.</span></span><br><span class="line">        <span class="keyword">if</span> ~exist(this.ipcfile, <span class="string">'file'</span>)</span><br><span class="line">            percent = <span class="number">0</span>;  <span class="comment">% File may not exist before the first iteration</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            fid = fopen( this.ipcfile, <span class="string">'r'</span> );</span><br><span class="line">            percent = sum(fscanf(fid, <span class="string">'%d'</span>)) / this.N;</span><br><span class="line">            percent = <span class="built_in">max</span>(<span class="number">0</span>, <span class="built_in">min</span>(<span class="number">1</span>,percent) );</span><br><span class="line">            fclose(fid);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">set</span>.<span class="title">message</span><span class="params">(this, newMsg)</span></span></span><br><span class="line">    <span class="comment">% Update the progress bar's displayed message.</span></span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> ishandle(this.wbh)</span><br><span class="line">            waitbar( this.percent, this.wbh, newMsg );</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">iterate</span><span class="params">(this, Nitr)</span></span></span><br><span class="line">    <span class="comment">% Update the progress bar by Nitr iterations (or 1 if not specified).</span></span><br><span class="line">        <span class="keyword">if</span> nargin&lt;<span class="number">2</span>,  Nitr = <span class="number">1</span>;  <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">        fid = fopen(this.ipcfile, <span class="string">'a'</span>);</span><br><span class="line">        fprintf(fid, <span class="string">'%d\n'</span>, Nitr);</span><br><span class="line">        fclose(fid);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">end</span> <span class="comment">%public methods</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%=====================  INTERNAL METHODS  =====================%</span></span><br><span class="line"><span class="keyword">methods</span> (Access=protected, Hidden)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">tupdate</span><span class="params">(this)</span></span></span><br><span class="line">    <span class="comment">% Check the IPC file and update the waitbar with progress.</span></span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> ishandle(this.wbh)</span><br><span class="line">            waitbar( this.percent, this.wbh, sprintf(<span class="string">'%s...%2.0f%% complete'</span>, this.Msg, this.percent*<span class="number">100</span>));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="comment">% Kill the timer if the waitbar is closed.</span></span><br><span class="line">            close(this);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span> <span class="comment">%private methods</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> <span class="comment">%classdef</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出屏幕信息到文件的方法"><a href="#输出屏幕信息到文件的方法" class="headerlink" title="输出屏幕信息到文件的方法"></a>输出屏幕信息到文件的方法</h2><p><em>20190629</em><br>一种更好的方法是将运行matlab时屏幕的一些显示信息直接保存到另外的文件，命令为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Call MATLAB with the appropriate input and output.</span></span><br><span class="line"><span class="comment"># Be careful to include 'exit' MATLAB command in M-file.</span></span><br><span class="line"><span class="comment"># Insert a cd command in the main M-file to change the working directory.</span></span><br><span class="line"><span class="comment"># Run the matlab program using runmatlab.sh myfile.m myoutput.txt. </span></span><br><span class="line"><span class="comment"># Save workspace.mat. </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#nohup /opt/matlab/bin/matlab -nodisplay -nodesktop -nosplash &lt; $1 &amp;&gt; $2 &amp;</span></span><br><span class="line"><span class="comment"># nohup /opt/matlab/bin/matlab -nodisplay -nodesktop -nosplash &lt; test.m &amp;&gt; output.txt &amp;</span></span><br><span class="line"><span class="built_in">nohup</span> /opt/matlab/bin/matlab -nodisplay -nodesktop -nojvm -nosplash &lt; test.m &amp;&gt; output.txt &amp;</span><br></pre></td></tr></table></figure>
+<p>比如我们的测试文件’test.m’如下</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l=<span class="number">1</span>:<span class="number">10</span></span><br><span class="line">l+<span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">exit;</span><br></pre></td></tr></table></figure>
+<p>那么运行上面的脚本之后，最后得到的‘output.txt’文件如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">                            &lt; M A T L A B (R) &gt;</span><br><span class="line">                  Copyright 1984-2015 The MathWorks, Inc.</span><br><span class="line">                   R2015b (8.6.0.267246) 64-bit (glnxa64)</span><br><span class="line">                              August 20, 2015</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">For online documentation, see http://www.mathworks.com/support</span><br><span class="line">For product information, visit www.mathworks.com.</span><br><span class="line"> </span><br><span class="line">&gt;&gt; </span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     9</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">    10</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">    11</span><br><span class="line"></span><br><span class="line">&gt;&gt; </span><br></pre></td></tr></table></figure>
+<p>即我们可以将屏幕的结果实时的输出到文件里。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io">Zhaohua Tian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://knifelees3.github.io/2019/03/03/C_%E6%95%99%E7%A8%8B_MATLAB_ParforProgress/">https://knifelees3.github.io/2019/03/03/C_%E6%95%99%E7%A8%8B_MATLAB_ParforProgress/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MATLAB/">MATLAB</a><a class="post-meta__tags" href="/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/03/06/C_%E6%95%99%E7%A8%8B_gnuplot%E7%BB%98%E5%88%B6gif%E5%8A%A8%E5%9B%BE/" title="gnuplot绘制gif动图"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/20190306_Gnuplot/20190306_Line_Map.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">gnuplot绘制gif动图</div></div></a></div><div class="next-post pull-right"><a href="/2019/03/02/C_%E6%95%99%E7%A8%8B_Ubuntu_%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/" title="Linux设置定时运行脚本以及软件开机自动启动"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/UbuntuICON.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux设置定时运行脚本以及软件开机自动启动</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/06/20/A_En_DipoleEmissionNearSphere/" title="Dipole&#39;s Emission Near Sphere"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/20200107214942441_16601.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-20</div><div class="title">Dipole&#39;s Emission Near Sphere</div></div></a></div><div><a href="/2019/07/06/A_En_How_To_Use_COMSOL_LiveLink_With_MATLAB/" title="How to use COMSOL, MATLAB and COMSOL livelink with MATLAB on Server"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/COMSOLICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-06</div><div class="title">How to use COMSOL, MATLAB and COMSOL livelink with MATLAB on Server</div></div></a></div><div><a href="/2019/04/07/A_En_MATLAB_FileOperationSummary/" title="MATLAB File Operation Summary"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-07</div><div class="title">MATLAB File Operation Summary</div></div></a></div><div><a href="/2019/04/17/A_En_MATLAB_ParallelComputing/" title="MATLAB Parallel Computing Summary"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/icons/MATLABICON.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-17</div><div class="title">MATLAB Parallel Computing Summary</div></div></a></div><div><a href="/2019/04/06/A_En_MATLAB_PlotSummary1_1dLinePlots/" title="Data Visualization Via MATALB (1d line plots)"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/20190406_MATLAB_PLOT/example_03_1d.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-06</div><div class="title">Data Visualization Via MATALB (1d line plots)</div></div></a></div><div><a href="/2019/12/30/A_En_MATLAB_PlotSummary2_3dContourPlots/" title="Data Visualization Via MATLAB (3 dimensional data)"><img class="cover" src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/sym_distri_static_MATLAB.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-12-30</div><div class="title">Data Visualization Via MATLAB (3 dimensional data)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/upload/ket.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zhaohua Tian</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.zhihu.com/people/knife-lee-94"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">ZhaohuaTian's personal blog/个人小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MATLAB-ParallelComputing"><span class="toc-number">1.</span> <span class="toc-text">MATLAB #ParallelComputing</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MATLAB-parfor-%E8%BF%9B%E5%BA%A6%E6%98%BE%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">MATLAB parfor 进度显示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%B1%8F%E5%B9%95%E4%BF%A1%E6%81%AF%E5%88%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">输出屏幕信息到文件的方法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/15/E_%E7%89%A9%E7%90%86_20YearsNanoOptics/" title="Sympoisum 20 Years Nano Optics Pioneer Interview Collections"><img src="https://mpl.mpg.de/fileadmin/_processed_/0/5/csm_MPL_Vahid_Sandoghdar_SCT_1343_4da3fea24f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Sympoisum 20 Years Nano Optics Pioneer Interview Collections"/></a><div class="content"><a class="title" href="/2025/02/15/E_%E7%89%A9%E7%90%86_20YearsNanoOptics/" title="Sympoisum 20 Years Nano Optics Pioneer Interview Collections">Sympoisum 20 Years Nano Optics Pioneer Interview Collections</a><time datetime="2025-02-15T15:32:30.000Z" title="Created 2025-02-15 23:32:30">2025-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/17/E_%E7%89%A9%E7%90%86_%E6%97%8B%E8%BD%ACFrame%E4%B8%8B%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E7%9A%84%E8%A1%A8%E7%A4%BA/" title="旋转Frame下哈密顿量的表示"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="旋转Frame下哈密顿量的表示"/></a><div class="content"><a class="title" href="/2025/01/17/E_%E7%89%A9%E7%90%86_%E6%97%8B%E8%BD%ACFrame%E4%B8%8B%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F%E7%9A%84%E8%A1%A8%E7%A4%BA/" title="旋转Frame下哈密顿量的表示">旋转Frame下哈密顿量的表示</a><time datetime="2025-01-17T12:29:30.000Z" title="Created 2025-01-17 20:29:30">2025-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/E_%E7%89%A9%E7%90%86_%E5%B8%B8%E8%A7%81%E5%8D%95%E5%85%89%E5%AD%90%E6%BA%90%E7%A7%8D%E7%B1%BB/" title="典型单光子源以及光子波形"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picblog/Snipaste_2025-02-12_00-04-09.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="典型单光子源以及光子波形"/></a><div class="content"><a class="title" href="/2024/10/28/E_%E7%89%A9%E7%90%86_%E5%B8%B8%E8%A7%81%E5%8D%95%E5%85%89%E5%AD%90%E6%BA%90%E7%A7%8D%E7%B1%BB/" title="典型单光子源以及光子波形">典型单光子源以及光子波形</a><time datetime="2024-10-28T14:28:30.000Z" title="Created 2024-10-28 22:28:30">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E7%A7%91%E7%A0%94%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF/" title="如何减少科研中的错误"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何减少科研中的错误"/></a><div class="content"><a class="title" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E7%A7%91%E7%A0%94%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF/" title="如何减少科研中的错误">如何减少科研中的错误</a><time datetime="2024-09-05T01:26:30.000Z" title="Created 2024-09-05 09:26:30">2024-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E6%A3%80%E6%9F%A5%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E5%91%8A/" title="如何减少科研中的错误"><img src="https://raw.githubusercontent.com/knifelees3/my_pictures/master/picgoup/WrittingFigures.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何减少科研中的错误"/></a><div class="content"><a class="title" href="/2024/09/05/E_%E7%89%A9%E7%90%86_%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E6%A3%80%E6%9F%A5%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E5%91%8A/" title="如何减少科研中的错误">如何减少科研中的错误</a><time datetime="2024-09-05T01:26:30.000Z" title="Created 2024-09-05 09:26:30">2024-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Zhaohua Tian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'jR8sBuhmF2OQvpAqh8LWCbt1-gzGzoHsz',
+      appKey: '2C5ChxH3zGFNoQ8rO7u9I2Lb',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
